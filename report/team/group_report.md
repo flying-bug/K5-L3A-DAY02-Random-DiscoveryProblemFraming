@@ -29,7 +29,7 @@
 | 9 | Nguyễn Minh Đạt | Khi tiếp nhận repo bài lab có nhiều tài liệu, tôi muốn xác định rõ đầu ra phải nộp và tiêu chí hoàn thành, để triển khai đúng ngay từ đầu và tránh sửa lại vì bỏ sót yêu cầu | Học viên lần đầu đọc repo của một bài lab | Đọc lại và tổng hợp yêu cầu: ước lượng 5-7 phút/bài. Dấu hiệu đã ghi nhận là phải đọc lại 2–3 lần/bài |Bộ: Bạn đã từng bỏ sót yêu cầu hoặc phải sửa bài vì hiểu sai đề chưa?|
 | 10 |Nguyễn Đăng Doanh |Khi bước security scan trong pipeline trả về danh sách lỗ hổng, tôi muốn biết cái nào thật sự phải xử lý trước, để không chặn release và không bỏ sót lỗ hổng nghiêm trọng |Devops, Team Lead |Tra và đánh giá ngữ cảnh từng CVE: 65 phút/lần scan | |
 | 11 |Nguyễn Đăng Doanh |Khi pipeline CI của một PR bị fail, tôi muốn biết nhanh fail do code, do test hay do hạ tầng, để trả lời dev và re-run hoặc sửa đúng chỗ |Dev, DevOps |Đọc log dài để tìm lỗi gốc: ~15 phút/lần | |
-| 12 |Nguyễn Đăng Doanh |Khi deploy bản mới lên production, tôi muốn chắc chắn đã làm đủ các bước trước và sau deploy, để không gây sự cố vì quên bước |DevOps |Smoke test thủ công các luồng chính: ~12 phút/lần | Vấn đề chính là quên bước hay smoke test mất thời gian? Bằng chứng hiện tại đang nói về thời gian kiểm tra |
+| 12 |Nguyễn Đăng Doanh |Khi deploy bản mới lên production, tôi muốn chắc chắn đã làm đủ các bước trước và sau deploy, để không gây sự cố vì quên bước |DevOps |Smoke test thủ công các luồng chính: ~12 phút/lần | Đạt: Vấn đề chính là quên bước hay smoke test mất thời gian? Bằng chứng hiện tại đang nói về thời gian kiểm tra |
 
 ### 2.2. Cluster
 
