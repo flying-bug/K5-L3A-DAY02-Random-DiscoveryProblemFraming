@@ -5,8 +5,9 @@
 ## Thông tin nhóm
 
 - Tên nhóm: Random
-- Candidate problem nhóm chọn (1 câu):
-- Quyết định cuối (Go / Not Yet / No-Go):
+- Candidate problem nhóm chọn (1 câu): Khi dependency/container scan trong CI/CD trả về ~40 finding mỗi lần, DevOps ở team nhiều repo mất ~65 phút để biết finding nào thật sự phải xử lý, trong đó ~30 phút là đánh giá CVE có thật sự ảnh hưởng hệ thống hay không.
+- Quyết định cuối (Go / Not Yet / No-Go): Not Yet cho bước AI (Workflow); Go cho pilot phần Rule trong 2 tuần.
+
 
 ## Thành viên
 
@@ -25,13 +26,14 @@ Gợi ý vai trò (một người có thể giữ nhiều vai): điều phối t
 
 | Checkpoint | Người chính | Người hỗ trợ | Sản phẩm |
 |---|---|---|---|
-| CP3 — Hội tụ nhóm | | | Cluster, cây OST, bảng chấm điểm |
-| CP4 — Kiểm chứng | | | Assumption map, snapshot hoặc survey |
-| CP4 — Research | | | Bảng research có link |
-| CP5 — Quy trình trước/sau | | | Quy trình + bảng before/after |
-| CP5 — Problem Statement v0 | | | Problem Statement v0 |
-| CP6 — Mức can thiệp + Problem Statement v1 | | | Ma trận, AI Canvas, eval, Problem Statement v1 |
-| CP6 — Quyết định | | | 4 rủi ro + Go/Not Yet/No-Go |
+| CP3 — Hội tụ nhóm | Đỗ Duy Bộ (cluster, chấm điểm shortlist), Nguyễn Đăng Doanh (cây OST) | Phạm Tuấn Cường, Nguyễn Minh Đạt (câu hỏi phản biện trong bảng pitch) | Cluster, cây OST, bảng chấm điểm |
+| CP4 — Kiểm chứng | Nguyễn Đăng Doanh (snapshot 1), Phạm Tuấn Cường (snapshot 2), Nguyễn Minh Đạt (snapshot 3) | Đỗ Duy Bộ (assumption map) | Assumption map, 3 interview snapshot |
+| CP4 — Research | Đỗ Duy Bộ | Nguyễn Đăng Doanh (giải thích Trivy/Dependabot, kiểm link) | Bảng research có link |
+| CP5 — Quy trình trước/sau | Nguyễn Đăng Doanh, Phạm Tuấn Cường | — | Quy trình + bảng before/after |
+| CP5 — Problem Statement v0 | Nguyễn Đăng Doanh | Nguyễn Minh Đạt (phản biện v0) | Problem Statement v0 |
+| CP6 — Mức can thiệp + Problem Statement v1 | Nguyễn Minh Đạt (ma trận, AI Canvas, PAIR), Đỗ Duy Bộ (Problem Statement v1, tiêu chí đánh giá) | Nguyễn Đăng Doanh (rà nhất quán mục 6–7) | Ma trận, AI Canvas, eval, Problem Statement v1 |
+| CP6 — Quyết định | Nguyễn Minh Đạt | Nguyễn Đăng Doanh, Đỗ Duy Bộ | 4 rủi ro + Go/Not Yet/No-Go |
+
 
 ## Cá nhân
 
@@ -87,7 +89,7 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 **Điều mình học được từ phần nhóm:**
 - Bottleneck phải là một bước cụ thể. Khi bị hỏi con số 65 phút gồm những gì, mình mới thấy chỉ khoảng 30 phút là phần thật sự khó, còn lại Rule làm được
 - Nên research công cụ có sẵn trước khi nghĩ tới AI: Trivy và Dependabot đã giải được phần lọc nhiễu, nên AI chỉ cần chen vào đúng một bước
-- Kiểm chứng với người thật cần chuẩn bị từ trước buổi học; nhóm chưa làm kịp phần này trong buổi nên Value vẫn chỉ ở mức TB
+- Kiểm chứng với người thật làm problem thay đổi: snapshot 2 cho thấy team nhỏ gần như không có pain nên nhóm thu hẹp Actor; snapshot 1 cho thấy dev cũng bị chặn PR. Lần sau nên hẹn phỏng vấn trước buổi học để có thời gian sửa problem
 
 ### HoTen-MSSV
 

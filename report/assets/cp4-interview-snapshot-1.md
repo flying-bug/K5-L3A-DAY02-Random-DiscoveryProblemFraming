@@ -5,6 +5,7 @@
 | Trường                                            | Nội dung |
 | ------------------------------------------------- | -------- |
 | Người được hỏi (vai trò, không ghi tên thật)      | Backend Engineer   |
+| Ngày / cách phỏng vấn | Nhắn tin phỏng vấn qua điện thoại (9/11/2026) |
 | Câu nói đáng nhớ nhất (nguyên văn)                | "Scan thì nhanh nhưng có chắc là báo lỗi đúng không?" |
 | Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? | Tuần trước PR bị pipeline chặn vì 8 finding Critical trong một thư viện xử lý ảnh; sau khi kiểm thì service không dùng tới phần bị lỗi, mất nửa buổi chờ DevOps xác nhận rồi mới merge |
 | Hiện đang xử lý bằng cách nào (workaround)?       | Tự đọc advisory trên GitHub, tìm trong code xem có import hàm bị lỗi không, rồi nhắn DevOps xin thêm vào ignore file         |
