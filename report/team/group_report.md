@@ -45,15 +45,16 @@
 Gốc là **1 outcome**. Nhánh là **opportunity** (nhu cầu, pain), không phải tính năng hay công cụ.
 
 ```text
-OUTCOME: 
-├── Opportunity A: 
-├── Opportunity B: 
-└── Opportunity C: 
+OUTCOME: Giảm thời gian DevOps triage kết quả security scan mỗi lần release (hiện ~55 phút/lần) mà không để lọt lỗ hổng Critical
+├── Opportunity A: Phần lớn finding không áp dụng cho hệ thống (package chỉ       dùng lúc build/test, chưa có bản vá) nhưng vẫn phải mở xem từng cái
+├── Opportunity B: Đánh giá một CVE có thật sự ảnh hưởng hệ thống mình không
+└── Opportunity C: Cùng một CVE xuất hiện lại ở nhiều lần scan và nhiều repo, phải đánh giá lại từ đầu vì không tìm lại được lần quyết định trước
 ```
 
 Những ý đã gạch bỏ vì là solution đội lốt opportunity:
-
--
+- "AI tự triage và tự đánh dấu bỏ qua lỗ hổng" → là giải pháp, lại còn vượt boundary (AI tự quyết thay người)
+- "Cần dashboard tổng hợp lỗ hổng" → là tính năng/công cụ, không phải pain
+- "Đổi sang công cụ scan khác ít báo nhầm hơn" → là giải pháp; pain thật nằm ở nhánh A
 
 ### 2.4. Chấm điểm shortlist (1–5)
 
