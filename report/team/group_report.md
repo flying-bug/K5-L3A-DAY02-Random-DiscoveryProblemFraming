@@ -253,19 +253,19 @@ Phức tạp cao: Quy trình dự kiến gồm đọc kết quả scan → đố
 
 ### 6.3. AI Canvas rút gọn
 
-| Thành phần                                                        | Nội dung |
-| ----------------------------------------------------------------- | -------- |
-| **Prediction** — AI dự đoán / tạo ra gì?                          |          |
-| **Judgment** — con người cân nhắc, quyết định gì?                 |          |
-| **Action** — hành động cuối cùng là gì, ai làm?                   |          |
-| **Outcome** — đo kết quả bằng gì?                                 |          |
-| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? |          |
-| **Feedback** — lấy phản hồi ở đâu để cải thiện?                   |          |
+| Thành phần | Nội dung |
+|---|---|
+| **Prediction** — AI dự đoán / tạo ra gì? | Tổng hợp bằng chứng, thông tin còn thiếu và đề xuất ưu tiên từng finding; dẫn nguồn, không tự kết luận khi thiếu dữ liệu. |
+| **Judgment** — con người cân nhắc, quyết định gì? | DevOps kiểm tra; người có thẩm quyền quyết định ưu tiên và chấp nhận rủi ro. |
+| **Action** — hành động cuối cùng là gì, ai làm? | DevOps cập nhật triage/ticket sau duyệt. AI không tự bỏ qua cảnh báo, sửa code hoặc cho phép release. |
+| **Outcome** — đo kết quả bằng gì? | Mục tiêu giảm ≥30% thời gian triage; không bỏ sót Critical trong tập đánh giá. Baseline 65 phút/lần cần đo lại; tính cả thời gian review. |
+| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | Kết quả scan, CVE, phiên bản dependency, ngữ cảnh hệ thống và quyết định cũ. Chưa xác nhận đủ dữ liệu và quyền sử dụng. |
+| **Feedback** — lấy phản hồi ở đâu để cải thiện? | Ghi chỉnh sửa của người duyệt và lỗi trên tập mẫu để cải thiện prompt, rule và đầu vào. |
 
 ### 6.4. Hai câu hỏi của Google PAIR
 
-- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**? Bằng chứng:
-- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào:
+- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**? Bằng chứng: Chọn augment: AI soạn nháp phần nhận định từ dữ liệu có sẵn; PM/PO kiểm tra, chỉnh sửa và gửi. Phỏng vấn cho thấy 2/3 người mất nhiều thời gian nhất ở phần narrative. Tuy nhiên, chưa có bằng chứng họ muốn giao hoàn toàn việc viết hoặc leadership chấp nhận bản nháp AI. Với team chỉ cần số liệu, ưu tiên template + dashboard.
+- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào: Ưu tiên tránh bỏ sót rủi ro/blocker có trong dữ liệu, vì có thể khiến leadership chậm can thiệp. Đây là đánh giá sơ bộ, cần xác nhận thêm với người dùng. Mỗi nhận định phải dẫn nguồn; thiếu thông tin phải ghi rõ. PM/PO đối chiếu rủi ro và số liệu trước khi gửi; AI không tự sửa số liệu hoặc gửi báo cáo.
 
 ---
 
