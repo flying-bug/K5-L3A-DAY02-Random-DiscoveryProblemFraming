@@ -4,7 +4,7 @@
 
 | Trường | Nội dung |
 |---|---|
-| Người được hỏi (vai trò, không ghi tên thật) | Backend dev kiêm DevOps, startup khoảng 8 dev, 2 repo trên GitHub; dùng Dependabot |
+| Người được hỏi (vai trò, không ghi tên thật) | Backend dev kiêm DevOps, 2 repo trên GitHub; dùng Dependabot |
 | Ngày / cách phỏng vấn | Hỏi qua điện thoại |
 | Câu nói đáng nhớ nhất (nguyên văn) | "Có bản vá thì cứ merge PR của Dependabot, test xanh là xong, ít khi ngồi đọc CVE." |
 | Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? | tuần trước có 9 cảnh báo Dependabot, merge 7 PR nâng version, 2 cái chưa có bản vá thì để đó |
