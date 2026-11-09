@@ -71,7 +71,10 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 
 **Điều mình học được từ phần nhóm:**
 
--
+- Số liệu về khối lượng chưa phải bằng chứng về impact: #4 có ~200 phản ánh/tuần nhưng khi Doanh hỏi lần gom sai gần nhất thì mình không có ví dụ, nên nhóm chọn #10
+- Phản biện là để kiểm tra nhận định có đủ cơ sở không, không phải để bảo vệ ý của mình
+- Nên research công cụ có sẵn trước khi nghĩ tới AI: Dependabot, Trivy, EPSS đã giải phần lọc nhiễu và xếp hạng bằng Rule, AI chỉ còn đáng cân nhắc ở bước đánh giá ngữ cảnh
+- Metric chỉ đo tốc độ là chưa đủ; phải có guardrail về chất lượng (không bỏ sót Critical/High) thì giảm thời gian mới có nghĩa
 
 
 ### NguyenDangDoanh-2A202603597
@@ -129,11 +132,14 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 - Mục 2.1: các commit "Update group_report.md" từ `0c979a7` đến `dcf249a`
 - Mục 4: commit `583dd99`
 - `report/assets/cp4-interview-snapshot-2.md`: commit `54cf2bb`, `de7d300`
-- Báo cáo cá nhân: commit `bb1ff11`
+- Báo cáo cá nhân: commit `bb1ff11`, `dffc05c`
 
 **Điều mình học được từ phần nhóm:**
 
--
+- Bottleneck phải tách theo từng bước có thời gian: khi Doanh hỏi 30 phút rà soát gồm gì, mình mới thấy đọc RUBRIC và đối chiếu chiếm ~20 phút chứ không phải lỗi tên file
+- Trước khi đặt bước AI vào quy trình tương lai, nên tính phương án chỉ dùng Rule (~40 phút/lần) làm mốc so sánh; chỉ khi Rule không đủ thì AI mới có lý do
+- Cần số liệu thật trước khi vẽ quy trình: thời gian từng bước ở mục 4.1 chia ra từ con số 65 phút nên bottleneck vẫn dựa trên giả định
+- Kiểm chứng có thể thu hẹp problem: team nhỏ chỉ mất ~20 phút/tuần, nên problem chỉ đáng giải ở team nhiều repo
 
 ### NguyenMinhDat-2A202603582
 
