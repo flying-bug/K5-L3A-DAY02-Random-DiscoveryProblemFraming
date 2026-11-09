@@ -152,9 +152,9 @@ HIỆN TẠI — ước lượng 15 phút/bài, cần đo lại
 
 | Điểm yếu AI chỉ ra | Đồng ý? | Đã sửa gì |
 |---|---|---|
-| Card #1 chưa ghi rõ đề nằm ở đâu; "nhiều học viên" chưa có số người cụ thể. | Có | Giữ đây là điều cần xác minh; không tự thêm tên kênh hoặc số người chưa ghi nhận. |
-| Card #2 chỉ giảm thời gian thì chưa đủ để chứng minh hiệu quả. | Có | Thêm điều kiện không tăng số yêu cầu bị bỏ sót và đối chiếu phản hồi chấm bài. |
-| Card #2 và #3 dễ bị xem là trùng nhau. | Có | Làm rõ card #3 là hiểu yêu cầu trước khi làm; card #2 là kiểm tra mức đáp ứng trước khi nộp. |
+| Card #1 chưa ghi rõ đề nằm ở đâu; "nhiều học viên" chưa có số người cụ thể. | Đồng ý | Giữ đây là điều cần xác minh; không tự thêm tên kênh hoặc số người chưa ghi nhận. |
+| Card #2 chỉ giảm thời gian thì chưa đủ để chứng minh hiệu quả. | Đồng ý | Thêm điều kiện không tăng số yêu cầu bị bỏ sót và đối chiếu phản hồi chấm bài. |
+| Card #2 và #3 dễ bị xem là trùng nhau. | Đồng ý một phần | Hai card đều liên quan đến yêu cầu bài lab nhưng xảy ra ở thời điểm khác nhau. Tôi làm rõ card #3 là hiểu yêu cầu trước khi làm, còn card #2 là kiểm tra bài trước khi nộp. |
 
 ---
 
@@ -167,9 +167,9 @@ HIỆN TẠI — ước lượng 15 phút/bài, cần đo lại
 | Nhận phản biện | Câu hỏi tôi nhận được: #7: Bạn thường tìm đề bài lab ở đâu? Bạn mất bao lâu để tìm đúng đề bài? Bạn đã từng tìm nhầm hoặc dùng nhầm phiên bản đề bài chưa? #8: Trong 20 phút đấy thao tác nào tốn công nhất (đọc chữ, kiểm tra tên file, hay so sánh code)? #9: Bạn đã từng bỏ sót yêu cầu hoặc phải sửa bài vì hiểu sai đề chưa? | Tôi đã sửa gì: Tôi làm rõ phần tốn công là đối chiếu yêu cầu với nội dung/code; phân biệt thời gian ước lượng với số đã đo và chưa khẳng định việc dùng nhầm phiên bản khi thiếu bằng chứng. |
 | Gom cluster / cây OST | Tôi tham gia đề xuất nhóm candidate | Nhóm phân biệt các pattern kiểm đủ, tìm thông tin và phân loại tín hiệu; OST tập trung vào thời gian triage security scan |
 | Chọn candidate problem | Thảo luận chọn #10 | Nhóm xác định bước đánh giá ngữ cảnh CVE là bottleneck dự kiến; các mốc 65 phút hiện tại và 25 phút tương lai vẫn cần đo kiểm |
-| Kiểm chứng / research | | |
+| Kiểm chứng / research | -  | Làm rõ dev mất 20–30 phút tự kiểm và còn phải chờ DevOps xác nhận; nhóm tách thời gian kiểm tra khỏi thời gian chờ duyệt. |
 | Quy trình nhóm | - | Nhóm thấy rõ việc tìm lại thông tin có thể cải thiện riêng, không cần đánh giá lại CVE từ đầu |
-| Problem Statement | - |  Thống nhất mục tiêu ≤30 phút/lần và giữ DevOps, Team Lead ở các điểm kiểm tra, phê duyệt |
+| Problem Statement | Góp phần viết v0 và v1 cho khớp với quy trình |  Thống nhất mục tiêu ≤30 phút/lần và giữ DevOps, Team Lead ở các điểm kiểm tra, phê duyệt |
 | Mức can thiệp AI | So sánh No AI, Rule, Workflow và Agent, rút gọn AI Canvas | Nhóm đề xuất thử Workflow có điều kiện, dùng Rule làm đối chứng; DevOps giữ quyền duyệt, AI không tự bỏ qua finding hoặc quyết định release |
 | Quyết định | Đề xuất chọn Workflow | Báo cáo chọn Not Yet cho AI; chỉ cân nhắc tiếp sau khi kiểm chứng Rule, dữ liệu và quyền sử dụng |
 
@@ -213,6 +213,7 @@ Tôi sẽ yêu cầu tách thời gian từng bước và ghi nguồn của số
 
 **6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi *problem → quy trình → metric → boundary → mức can thiệp AI → quyết định* của bài nhóm mình.
 Bài nhóm hiện tại đang tập trung vào việc DevOps mất nhiều thời gian vào việc xác định finding nào cần xử lý sau security scan. Quy trình hiện tại gồm mở báo cáo, lọc ban đầu, tìm quyết định cũ, đánh giá ngữ cảnh và tạo ticket hoặc báo Team Lead. Bước nghẽn dự kiến là đánh giá ảnh hưởng của CVE. Nhóm đặt mục tiêu từ khoảng 65 xuống tối đa 30 phút mỗi lần, tính cả review; không bỏ qua sai Critical/High. Boundary là AI không tự bỏ qua cảnh báo, sửa code hoặc quyết định release, con người duyệt. Thử Rule trước, chỉ cân nhắc Workflow khi Rule chưa đủ. Cuối cùng quyết định Not Yet cho bước AI vì chưa xác nhận đủ dữ liệu, quyền sử dụng và hiệu quả.
+
 ---
 
 ## 7. Tài liệu tham khảo
