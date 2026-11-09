@@ -84,7 +84,7 @@ Những ý đã gạch bỏ vì là solution đội lốt opportunity:
 
 | # | Giả định | Loại (Value / Usability / Feasibility / Viability) | Quan trọng (1–5) | Đã có bằng chứng (1–5) | Kiểm chứng trước? |
 |---:|---|---|---:|---:|---|
-| 1 | | | | | |
+| 1 | DevOps/dev ngoài nhóm cũng mất nhiều thời gian triage security scan; đây là công việc lặp lại và ảnh hưởng đáng kể đến công việc hoặc tiến độ release. | Value | 5 | 2 |  Có - ưu tiên 1. Phỏng vấn 2–3 người ngoài nhóm về lần scan gần nhất, số finding, thời gian từng bước và ảnh hưởng thực tế.|
 | 2 | | | | | |
 | 3 | | | | | |
 | 4 | | | | | |
