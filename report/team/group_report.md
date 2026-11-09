@@ -35,9 +35,10 @@
 
 | Cluster | Các candidate | Pattern chung |
 |---|---|---|
-| A | | |
-| B | | |
-| C | | |
+| A — Kiểm đủ trước khi giao đi | #1, #8 (kiểm bài trước khi nộp), #12 (kiểm bước trước/sau deploy) | Trước một mốc cố định (nộp bài, deploy), phải tự đối chiếu với một danh sách yêu cầu/bước, dễ sót khi vội |
+| B — Tìm và hiểu đúng thông tin hiện hành | #5 (quy trình nội bộ), #6 (bàn giao), #7 (tìm đúng đề bài), #9 (xác định đầu ra phải nộp) | Thông tin cần dùng nằm rải rác ở nhiều nơi, không rõ bản nào còn hiệu lực nên phải đọc lại hoặc hỏi lại |
+| C — Phân loại và ưu tiên lượng lớn tín hiệu | #4 (phản ánh khách hàng), #10 (danh sách CVE), #11 (log CI fail) | Phải đọc nhiều đầu vào không có cấu trúc để xếp loại và chọn cái cần xử lý trước |
+| D — Câu hỏi lặp lại giữa người với người | #2 (ai làm phần nào), #3 (lỗi git trên Discord) | Cùng một câu hỏi bị hỏi lại nhiều lần vì thông tin không nằm ở chỗ chung ai cũng thấy |
 
 ### 2.3. Opportunity Solution Tree rút gọn
 
