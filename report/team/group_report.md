@@ -246,7 +246,7 @@ Phức tạp cao: Quy trình dự kiến gồm đọc kết quả scan → đố
 | **Workflow** | Rule xử lý dữ liệu có cấu trúc → AI tổng hợp bằng chứng và thông tin còn thiếu → DevOps kiểm tra, quyết định ưu tiên. | Sau khi áp dụng Rule, việc đọc và tổng hợp ngữ cảnh vẫn là bottleneck đáng kể. | AI diễn giải sai, dẫn nguồn không khớp hoặc kết luận quá mức từ dữ liệu thiếu. | Đề xuất thử có điều kiện. |
 | **Agent** | AI tự chọn bước tra cứu tiếp theo và công cụ trong phạm vi được cấp; người phụ trách vẫn duyệt quyết định cuối. | Các ca thực tế đòi hỏi đường đi linh hoạt mà Workflow định sẵn không đáp ứng được. | Khó kiểm soát phạm vi truy cập, số lượt thực hiện, chi phí và chuỗi suy luận sai. | Chưa chọn |
 
-**Mức chọn:** Đề xuất Workflow có AI hỗ trợ tổng hợp bằng chứng, chưa đưa vào vận hành thực tế.
+**Mức chọn:** Hiện chọn pilot Rule trong 2 tuần. Workflow có AI là hướng đề xuất, trạng thái Not Yet; chỉ thử khi Rule chưa đạt mục tiêu, có dữ liệu đánh giá và được phép sử dụng dữ liệu.
 
 **Vì sao không chọn mức đơn giản hơn:** No AI và Rule có thể giải quyết phần chuẩn hóa, đối chiếu và lưu quyết định. Giả thuyết còn cần kiểm chứng là phần đọc hiểu ngữ cảnh riêng của hệ thống vẫn chiếm nhiều thời gian sau các cải tiến này. Nếu thử nghiệm cho thấy No AI hoặc Rule đã đạt mục tiêu, nhóm sẽ chọn mức đó và bỏ bước AI. Hiện chưa đủ bằng chứng để khẳng định Workflow tốt hơn.
  
@@ -258,7 +258,7 @@ Phức tạp cao: Quy trình dự kiến gồm đọc kết quả scan → đố
 | **Prediction** — AI dự đoán / tạo ra gì? | Tổng hợp bằng chứng, thông tin còn thiếu và đề xuất ưu tiên từng finding; dẫn nguồn, không tự kết luận khi thiếu dữ liệu. |
 | **Judgment** — con người cân nhắc, quyết định gì? | DevOps kiểm tra; người có thẩm quyền quyết định ưu tiên và chấp nhận rủi ro. |
 | **Action** — hành động cuối cùng là gì, ai làm? | DevOps cập nhật triage/ticket sau duyệt. AI không tự bỏ qua cảnh báo, sửa code hoặc cho phép release. |
-| **Outcome** — đo kết quả bằng gì? | Mục tiêu giảm ≥30% thời gian triage; không bỏ sót Critical trong tập đánh giá. Baseline 65 phút/lần cần đo lại; tính cả thời gian review. |
+| **Outcome** — đo kết quả bằng gì? | Thời gian triage từ khoảng 65 → ≤30 phút/lần, tính cả thời gian review; không có Critical/High bị bỏ qua sai, kể cả chưa có bản vá. Tỉ lệ đề xuất AI bị người duyệt đổi kết luận ≤30%. Baseline cần đo lại; Workflow phải được so sánh với phương án chỉ dùng Rule. |
 | **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | Kết quả scan, CVE, phiên bản dependency, ngữ cảnh hệ thống và quyết định cũ. Chưa xác nhận đủ dữ liệu và quyền sử dụng. |
 | **Feedback** — lấy phản hồi ở đâu để cải thiện? | Ghi chỉnh sửa của người duyệt và lỗi trên tập mẫu để cải thiện prompt, rule và đầu vào. |
 
