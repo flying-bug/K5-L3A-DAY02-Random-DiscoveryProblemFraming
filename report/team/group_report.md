@@ -175,16 +175,19 @@ Ghi rõ bước nào **Rule**, bước nào **AI**, bước nào **con người*
 
 | Trường | Nội dung |
 |---|---|
-| **Actor** | |
-| **Quy trình** | |
-| **Bottleneck** | |
-| **Impact** | |
-| **Success Metric** (baseline → target, cách đo) | |
-| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | |
+| **Actor** |DevOps engineer phụ trách tích hợp dependency/container scan vào CI/CD ở một team phát triển ~20–50 dev; gián tiếp là dev chủ repo nhận ticket sửa lỗ hổng |
+| **Quy trình** |Mỗi lần scan chạy trên nhánh main hoặc trước release (3 lần/tuần): mở report → lọc High/Critical → đánh giá từng CVE → đánh dấu bỏ qua hoặc tạo ticket → quyết định chặn hay cho release → ghi lại ngoại lệ |
+| **Bottleneck** |Bước đánh giá ngữ cảnh từng finding High/Critical (CVE có thật sự ảnh hưởng hệ thống mình không): ~30 trên tổng ~65 phút mỗi lần |
+| **Impact** |DevOps mất ~2–2,5 giờ/tuần cho việc lặp lại; ~2 lần/tháng release bị chặn bởi finding sau đó được xác định là không ảnh hưởng; khi có quá nhiều cảnh báo, lỗ hổng thật dễ bị bỏ sót và dev mất niềm tin vào scan |
+| **Success Metric** (baseline → target, cách đo) |(1) Thời gian triage: ~65'/lần → dưới 20'/lần; đo bằng DevOps tự ghi thời gian mỗi lần scan trong 4 tuần. (2) Release bị chặn oan (finding chặn release, sau đó được đánh dấu "không ảnh hưởng"): ~2/tháng → 0; đếm qua lịch sử pipeline và ignore file. (3) Guardrail: 0 finding Critical có bản vá bị bỏ qua sai; rà lại toàn bộ finding bị bỏ qua vào cuối mỗi tuần. Baseline hiện là ước lượng, sẽ bấm giờ lại ở 2 lần scan tới. |
+| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) |Không tự bỏ qua finding, không tự cho qua hay chặn release, không tự sửa ignore file hay ticket, không truy cập secret/dữ liệu production. Mọi finding không bị quy tắc cố định lọc phải được DevOps xác nhận; finding Critical bị đánh giá "không ảnh hưởng" cần lead duyệt; mọi ngoại lệ có hạn tối đa 90 ngày |
 
 Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng ý không:
 
--
+- Baseline là ước lượng của một người. Đồng ý. Đã ghi rõ trong metric; sẽ thay bằng số bấm giờ thật và số từ phỏng vấn ở CP4.
+- Metric thời gian có thể "đạt" bằng cách bỏ qua hết cảnh báo. Đồng ý. Đã thêm metric guardrail (3): không bỏ qua sai finding Critical có bản vá.
+- "Release bị chặn oan" chưa có định nghĩa, khó đếm. Đồng ý. Đã định nghĩa là finding đã chặn release nhưng sau đó được đánh dấu "không ảnh hưởng".
+- Boundary trong v0 đã nhắc tới AI, có phải đang lẫn giải pháp vào problem không? Không đồng ý. Template yêu cầu trường Boundary ghi AI không được làm gì; các trường Actor, Quy trình, Bottleneck, Impact, Metric không chứa giải pháp nào.
 
 ---
 
