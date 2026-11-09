@@ -43,7 +43,7 @@
 ### 2.3. Opportunity Solution Tree rút gọn
 
 ```text
-OUTCOME: Giảm thời gian DevOps triage kết quả security scan (hiện ~[65] phút/lần scan) mà không để lọt lỗ hổng Critical
+OUTCOME: Giảm thời gian DevOps triage kết quả security scan (hiện ~65 phút/lần scan) mà không để lọt lỗ hổng Critical
 ├── Opportunity A: Phần lớn finding là nhiễu nhận ra được bằng dấu hiệu rõ ràng (package chỉ dùng lúc build/test, hoặc chưa có bản vá nên chưa thể xử lý), nhưng vẫn phải mở xem từng cái
 ├── Opportunity B: Với các finding còn lại, muốn biết CVE có thật sự ảnh hưởng hệ thống mình không thì phải tra nhiều nguồn và đọc code, mất nhiều thời gian nhất
 └── Opportunity C: Cùng một CVE xuất hiện lại ở nhiều lần scan và nhiều repo, phải đánh giá lại từ đầu vì không tìm lại được lần quyết định trước
@@ -74,7 +74,7 @@ Những ý đã gạch bỏ vì là solution đội lốt opportunity:
 **Vì sao loại các candidate còn lại:**
 
 - #11 (CI fail): điểm gần bằng #10, nhưng mỗi lần chỉ ~15 phút và chưa có số lần fail/tuần (câu hỏi của Bộ chưa có số liệu trả lời). Hậu quả khi chẩn đoán sai chủ yếu là mất thời gian re-run, nhẹ hơn để lọt lỗ hổng bảo mật.
-- #4 (phản ánh khách hàng): bottleneck chỉ ~25 phút/tuần cho 1 người. Khi Doanh hỏi về lần gom sai gần nhất, Bộ chưa đưa được ví dụ cụ thể / ghi đúng câu trả lời thật. Nội dung phản ánh có thông tin cá nhân của khách nên rủi ro về dữ liệu cao. Trong nhóm chỉ Bộ có trải nghiệm.
+- #4 (phản ánh khách hàng): bottleneck chỉ ~25 phút/tuần cho 1 người. Khi Doanh hỏi về lần gom sai gần nhất, Bộ chưa đưa được ví dụ cụ thể . Nội dung phản ánh có thông tin cá nhân của khách nên rủi ro về dữ liệu cao. Trong nhóm chỉ Bộ có trải nghiệm.
 
 **Xử lý bất đồng (nếu có):** Bộ ban đầu muốn chọn #4 vì có số liệu của chính mình, nhưng đồng ý chọn #10 vì impact và hậu quả lớn hơn. Nhóm lo #10 chỉ có Doanh hiểu domain, nên thống nhất Doanh giải thích quy trình scan cho cả nhóm và hẹn 2–3 người làm DevOps/dev ngoài nhóm để phỏng vấn ở CP4.
 
@@ -210,7 +210,7 @@ Nếu chỉ dùng Rule (bỏ bước 3 AI), thời gian ước lượng còn kho
 |---|---|
 | **Actor** |DevOps engineer phụ trách tích hợp dependency/container scan vào CI/CD ở một team phát triển ~20–50 dev; gián tiếp là dev chủ repo nhận ticket sửa lỗ hổng |
 | **Quy trình** |Mỗi lần scan chạy trên nhánh main hoặc trước release (3 lần/tuần): Mỗi lần scan (3 lần/tuần): mở báo cáo, xuất ~40 finding → lọc nhiễu thủ công → tra lại quyết định cũ trong chat/ticket → đánh giá ngữ cảnh ~10 finding còn lại → xếp ưu tiên, tạo ticket, báo Team Lead nếu chặn release |
-| **Bottleneck** |Bước đánh giá ngữ cảnh từng finding High/Critical (CVE có thật sự ảnh hưởng hệ thống mình không): ~30 trên tổng ~65 phút mỗi lần |
+| **Bottleneck** |Bước đánh giá ngữ cảnh ~10 finding còn lại sau khi lọc (CVE có thật sự ảnh hưởng hệ thống mình không): ~30 trên tổng ~65 phút mỗi lần |
 | **Impact** |DevOps mất ~3 giờ/tuần cho việc lặp lại; ~2 lần/tháng release bị chặn bởi finding sau đó được xác định là không ảnh hưởng; khi có quá nhiều cảnh báo, lỗ hổng thật dễ bị bỏ sót và dev mất niềm tin vào scan |
 | **Success Metric** (baseline → target, cách đo) |(1) Thời gian triage: ~65'/lần → dưới 30'/lần; đo bằng DevOps tự ghi thời gian mỗi lần scan trong 4 tuần. (2) Release bị chặn oan (finding chặn release, sau đó được đánh dấu "không ảnh hưởng"): ~2/tháng → 0; đếm qua lịch sử pipeline và ignore file. (3) Guardrail: 0 finding Critical có bản vá bị bỏ qua sai; rà lại toàn bộ finding bị bỏ qua vào cuối mỗi tuần. Baseline hiện là ước lượng, sẽ bấm giờ lại ở 2 lần scan tới. |
 | **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) |Không tự bỏ qua finding, không tự cho qua hay chặn release, không tự sửa ignore file hay ticket, không truy cập secret/dữ liệu production. Mọi finding không bị quy tắc cố định lọc phải được DevOps xác nhận; finding Critical bị đánh giá "không ảnh hưởng" cần lead duyệt; mọi ngoại lệ có hạn tối đa 90 ngày |
@@ -229,13 +229,15 @@ Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng
 
 ### 6.1. Ma trận độ mơ hồ × độ phức tạp
 
-Bài của nhóm nằm ở ô: Độ mơ hồ cao × Độ phức tạp cao — đánh giá sơ bộ.
+Bài của nhóm nằm ở ô: Độ mơ hồ cao × Độ phức tạp thấp (xét phần còn lại sau khi Rule đã xử lý).
 
 Vì sao:
 
-Mơ hồ cao: Đánh giá một CVE có ảnh hưởng đến hệ thống phụ thuộc vào phiên bản, cách sử dụng dependency và môi trường triển khai. Thông tin có thể thiếu hoặc mâu thuẫn; không thể chỉ dựa vào mức độ nghiêm trọng để kết luận.
+Mơ hồ cao: quyết định một CVE có ảnh hưởng hệ thống hay không phụ thuộc vào phiên bản, cách code dùng dependency và môi trường triển khai; thông tin có thể thiếu hoặc mâu thuẫn, nhiều kết luận khác nhau đều có lý. Không thể chỉ dựa vào mức nghiêm trọng để kết luận.
 
-Phức tạp cao: Quy trình dự kiến gồm đọc kết quả scan → đối chiếu quyết định cũ → tra thông tin CVE → xem ngữ cảnh hệ thống → đề xuất ưu tiên → người phụ trách duyệt. Dữ liệu đến từ nhiều nguồn và các bước phụ thuộc nhau.
+Phức tạp thấp: toàn bộ quy trình có 5 bước nhưng các bước cố định và biết trước thứ tự. Lọc nhiễu, áp quyết định cũ và xếp hạng có đúng/sai rõ nên Rule làm được; sau đó chỉ còn một bước mơ hồ là đánh giá ngữ cảnh, không cần quyết định bước tiếp theo một cách linh hoạt.
+
+Theo ma trận, ô này hợp với Workflow có AI ở một bước, không cần Agent.
 
 ### 6.2. So sánh 4 mức
 
@@ -246,18 +248,18 @@ Phức tạp cao: Quy trình dự kiến gồm đọc kết quả scan → đố
 | **Workflow** | Rule xử lý dữ liệu có cấu trúc → AI tổng hợp bằng chứng và thông tin còn thiếu → DevOps kiểm tra, quyết định ưu tiên. | Sau khi áp dụng Rule, việc đọc và tổng hợp ngữ cảnh vẫn là bottleneck đáng kể. | AI diễn giải sai, dẫn nguồn không khớp hoặc kết luận quá mức từ dữ liệu thiếu. | Đề xuất thử có điều kiện. |
 | **Agent** | AI tự chọn bước tra cứu tiếp theo và công cụ trong phạm vi được cấp; người phụ trách vẫn duyệt quyết định cuối. | Các ca thực tế đòi hỏi đường đi linh hoạt mà Workflow định sẵn không đáp ứng được. | Khó kiểm soát phạm vi truy cập, số lượt thực hiện, chi phí và chuỗi suy luận sai. | Chưa chọn |
 
-**Mức chọn:** Hiện chọn pilot Rule trong 2 tuần. Workflow có AI là hướng đề xuất, trạng thái Not Yet; chỉ thử khi Rule chưa đạt mục tiêu, có dữ liệu đánh giá và được phép sử dụng dữ liệu.
+**Mức chọn:** (Rule + AI ở một bước + người duyệt), triển khai 2 giai đoạn. Giai đoạn 1 chỉ chạy phần Rule trong 2 tuần; giai đoạn 2 (bước AI) ở trạng thái Not Yet, chỉ bật khi Rule chưa đạt target, đã có tập đánh giá và được phép sử dụng dữ liệu.
 
-**Vì sao không chọn mức đơn giản hơn:** No AI và Rule có thể giải quyết phần chuẩn hóa, đối chiếu và lưu quyết định. Giả thuyết còn cần kiểm chứng là phần đọc hiểu ngữ cảnh riêng của hệ thống vẫn chiếm nhiều thời gian sau các cải tiến này. Nếu thử nghiệm cho thấy No AI hoặc Rule đã đạt mục tiêu, nhóm sẽ chọn mức đó và bỏ bước AI. Hiện chưa đủ bằng chứng để khẳng định Workflow tốt hơn.
+**Vì sao không chọn mức đơn giản hơn:** Theo ước lượng ở mục 4.2, chỉ dùng No AI + Rule thì thời gian còn khoảng 40'/lần: bước lọc nhiễu và tra quyết định cũ (~20') gần như biến mất, nhưng bước đánh giá ngữ cảnh vẫn nguyên ~30', nên chưa đạt target ≤ 30'/lần. Phần còn lại là đọc advisory và đối chiếu với code, tức đọc hiểu văn bản không có cấu trúc mà Rule không làm được, nên mới cần AI ở đúng bước này. Đây là giả thuyết: vì vậy nhóm chạy Rule trước, và nếu sau 2 tuần Rule đã đạt ≤ 30'/lần thì dừng ở Rule.
  
 
 ### 6.3. AI Canvas rút gọn
 
 | Thành phần | Nội dung |
 |---|---|
-| **Prediction** — AI dự đoán / tạo ra gì? | Tổng hợp bằng chứng, thông tin còn thiếu và đề xuất ưu tiên từng finding; dẫn nguồn, không tự kết luận khi thiếu dữ liệu. |
-| **Judgment** — con người cân nhắc, quyết định gì? | DevOps kiểm tra; người có thẩm quyền quyết định ưu tiên và chấp nhận rủi ro. |
-| **Action** — hành động cuối cùng là gì, ai làm? | DevOps cập nhật triage/ticket sau duyệt. AI không tự bỏ qua cảnh báo, sửa code hoặc cho phép release. |
+| **Prediction** — AI dự đoán / tạo ra gì? | Với mỗi finding còn lại sau Rule (~10/lần): tóm tắt advisory, chỉ ra chỗ code import/gọi package bị lỗi, gắn một trong ba nhãn "có thể ảnh hưởng / có vẻ không ảnh hưởng / chưa đủ thông tin", kèm trích dẫn. Không xếp ưu tiên và không tự kết luận khi thiếu dữ liệu. |
+| **Judgment** — con người cân nhắc, quyết định gì? | DevOps kiểm trích dẫn và quyết định finding có ảnh hưởng không; Team Lead duyệt finding Critical bị đánh giá "không ảnh hưởng" và mọi quyết định chặn release |
+| **Action** — hành động cuối cùng là gì, ai làm? | DevOps tạo ticket cho dev hoặc ghi quyết định bỏ qua vào .trivyignore kèm lý do và ngày hết hạn. AI không tự bỏ qua cảnh báo, sửa code hoặc cho phép release. |
 | **Outcome** — đo kết quả bằng gì? | Thời gian triage từ khoảng 65 → ≤30 phút/lần, tính cả thời gian review; không có Critical/High bị bỏ qua sai, kể cả chưa có bản vá. Tỉ lệ đề xuất AI bị người duyệt đổi kết luận ≤30%. Baseline cần đo lại; Workflow phải được so sánh với phương án chỉ dùng Rule. |
 | **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | Kết quả scan, CVE, phiên bản dependency, ngữ cảnh hệ thống và quyết định cũ. Chưa xác nhận đủ dữ liệu và quyền sử dụng. |
 | **Feedback** — lấy phản hồi ở đâu để cải thiện? | Ghi chỉnh sửa của người duyệt và lỗi trên tập mẫu để cải thiện prompt, rule và đầu vào. |
@@ -276,7 +278,7 @@ Phức tạp cao: Quy trình dự kiến gồm đọc kết quả scan → đố
 | **Actor** | DevOps engineer phụ trách triage kết quả dependency/container scan trong CI/CD ở team phát triển ~20–50 dev. Team Lead duyệt các finding có thể chặn release; dev chủ module nhận ticket sửa lỗ hổng |
 | **Quy trình** | Mỗi lần scan (3 lần/tuần, theo Doanh): mở báo cáo, xuất ~40 finding → lọc nhiễu thủ công → tra lại quyết định cũ trong chat/ticket → đánh giá ngữ cảnh ~10 finding còn lại → xếp ưu tiên, tạo ticket, báo Team Lead nếu chặn release |
 | **Bottleneck** | Bước đánh giá ngữ cảnh (CVE có thật sự ảnh hưởng hệ thống không): ~30/65 phút mỗi lần. Phụ: lọc nhiễu và tra quyết định cũ ~20 phút, là việc lặp lại |
-| **Impact** | ~65 phút/lần × 3 lần/tuần ≈ 3 giờ/tuần cho 1 DevOps (số liệu của Doanh, [cập nhật theo kết quả 3.2]). Theo Doanh, ~2 lần/tháng release bị chặn bởi finding sau đó được xác định là không ảnh hưởng (chưa kiểm chứng). Khi có quá nhiều cảnh báo, lỗ hổng thật dễ bị bỏ sót |
+| **Impact** | ~65 phút/lần × 3 lần/tuần ≈ 3 giờ/tuần cho 1 DevOps (số liệu tự báo cáo của Doanh, chưa kiểm chứng với người ngoài nhóm). Theo Doanh, ~2 lần/tháng release bị chặn bởi finding sau đó được xác định là không ảnh hưởng (chưa kiểm chứng). Khi có quá nhiều cảnh báo, lỗ hổng thật dễ bị bỏ sót |
 | **Success Metric** (baseline → target, cách đo) | (1) Thời gian triage, **tính cả thời gian người duyệt**: ~65'/lần → ≤ 30'/lần; DevOps tự ghi giờ trong 4 tuần (~12 lần scan). (2) Guardrail: **0 finding Critical/High bị bỏ qua sai**, kể cả finding chưa có bản vá; 2 tuần đầu DevOps vẫn đánh giá thủ công song song để đối chiếu, sau đó rà danh sách bị bỏ qua vào cuối mỗi tuần. (3) Tỉ lệ đề xuất của AI mà DevOps phải đổi kết luận: ≤ 30%; đếm trong log duyệt. (4) Release bị chặn oan: ~2/tháng → 0; đếm qua lịch sử pipeline và ignore file |
 | **Boundary** | AI không tự bỏ qua finding, không sửa `.trivyignore` hay ticket, không sửa code hay nâng version, không chặn/mở release. Không đưa mã nguồn vào AI bên ngoài khi Team Lead chưa cho phép. Rule không được ẩn Critical chưa có bản vá. HITL: DevOps duyệt mọi đề xuất của AI; Team Lead duyệt mọi finding Critical bị đánh giá "không ảnh hưởng" hoặc có thể chặn release; mọi ngoại lệ có hạn tối đa 90 ngày |
 | **AI intervention point** | Sau bước Rule lọc nhiễu (phạm vi build/test, quyết định cũ còn hạn) và xếp hạng theo CVSS + EPSS; trước bước DevOps quyết định. AI chỉ xử lý ~10 finding còn lại: tóm tắt advisory, chỉ ra chỗ code import/gọi package bị lỗi, đề xuất "có thể ảnh hưởng / có vẻ không / chưa đủ thông tin", kèm trích dẫn |
@@ -291,7 +293,6 @@ Phức tạp cao: Quy trình dự kiến gồm đọc kết quả scan → đố
 | Boundary | Không tự bỏ qua, không tự chặn/mở release, không sửa ignore file/ticket | Thêm: không đưa mã nguồn vào AI bên ngoài khi chưa được phép; Rule không được ẩn Critical chưa có bản vá | Giả định #6 (Viability) chưa kiểm chứng; rủi ro từ research Trivy |
 | Actor | DevOps engineer; gián tiếp là dev chủ repo | Thêm Team Lead là người duyệt finding có thể chặn release | Quy trình 4.1 cho thấy bước 5 có handoff cho Team Lead; HITL cần ghi rõ ai duyệt |
 | Impact | Số liệu ghi như đã chắc chắn | Ghi rõ nguồn: số liệu của Doanh, chưa kiểm chứng | Phản biện ở mục 5: baseline là ước lượng của một người; giả định #4 ở 3.1 mới có bằng chứng = 1 |
-| [Trường đổi theo kết quả 3.2] | | | [điền sau khi có kết quả phỏng vấn/survey thật] |
 
 **Tiêu chí đánh giá đầu ra của AI (3–5 tiêu chí):**
 
@@ -313,7 +314,7 @@ Tập đánh giá: 30–50 CVE mà team đã có quyết định (xử lý / b�
 
 | Rủi ro | Câu hỏi | Mức độ rủi ro (Thấp = an toàn / TB / Cao = nguy hiểm) | Lý do / bằng chứng |
 |---|---|---|---|
-| **Value** | Người dùng có thật sự cần và sẽ dùng không? | TB | Pain có số liệu: ~65 phút/lần × 3 lần/tuần (Doanh); research cho thấy nhiều công cụ (Dependabot, Trivy, Snyk) đều đang giải bài này, nên đây là pain phổ biến. Nhưng số liệu chủ yếu từ 1 người; giả định #4 (release bị trễ) chưa có bằng chứng. [Cập nhật theo kết quả 3.2] |
+| **Value** | Người dùng có thật sự cần và sẽ dùng không? | TB | Pain có số liệu: ~65 phút/lần × 3 lần/tuần (Doanh); research cho thấy nhiều công cụ (Dependabot, Trivy, Snyk) đều đang giải bài này, nên đây là pain phổ biến. Nhưng số liệu chủ yếu từ 1 người; giả định #4 (release bị trễ) chưa có bằng chứng. |
 | **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | Thấp | DevOps vốn đã đọc báo cáo scan hằng tuần; đầu ra chỉ là danh sách đã lọc, xếp thứ tự, mỗi finding kèm đề xuất và trích dẫn để kiểm. Không phải học công cụ mới |
 | **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | TB | Phần Rule khả thi cao: kết quả scan có sẵn dạng JSON, Trivy/Dependabot có bộ lọc sẵn, EPSS miễn phí có API. Phần AI khó: phải hiểu code có thật sự gọi tới phần bị lỗi không; Snyk cũng chỉ GA cho Java, JS/TS, Python và ghi rõ kết quả không chắc chắn. Chưa có tập đánh giá; trong nhóm chỉ Doanh có domain |
 | **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | **Cao** (bước AI) / Thấp (bước Rule) | Bước AI phải gửi danh sách lỗ hổng chưa vá cùng đoạn code ra công cụ bên ngoài, tức là đưa cho bên thứ ba bản đồ điểm yếu của hệ thống; công ty chưa xác nhận có cho phép không (giả định #6). Bước Rule chạy nội bộ, công cụ miễn phí. DevOps vận hành, Team Lead chịu trách nhiệm chính sách |
