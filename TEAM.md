@@ -41,15 +41,31 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 
 **Phần việc phụ trách:**
 
--
+- Nhóm trưởng: fork repo, mời thành viên, điền thông tin nhóm trong `TEAM.md`
+- Pitch 3 card #4, #5, #6 và phản biện card của Đạt (#7, #9) và Doanh (#11) ở CP3
+- Gom cluster (mục 2.2), sửa cây OST (mục 2.3), chấm điểm shortlist và viết lý do chọn/loại (mục 2.4)
+- CP4: assumption map (mục 3.1) và research giải pháp đã có (mục 3.3)
+- CP6: Problem Statement v1, bảng v0 → v1, tiêu chí đánh giá (mục 7) và quyết định (mục 8)
 
 **Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
 
--
+- Ghi các câu hỏi phản biện vào bảng pitch 2.1; câu hỏi về số lần CI fail/tuần cho #11 chưa có số liệu, là một lý do loại #11
+- Viết bảng 4 cluster A–D; sửa outcome OST theo đơn vị "phút/lần scan" và viết lại Opportunity A, B
+- Chấm 7 tiêu chí cho #10, #11, #4; chốt #10 (26 điểm). Ban đầu muốn chọn #4 nhưng đồng ý đổi sau phản biện của Doanh
+- Viết 6 giả định có điểm quan trọng/bằng chứng và thứ tự kiểm chứng; research 4 nguồn có link (Dependabot, Trivy, FIRST EPSS, Snyk) và kết luận research
+- Viết Problem Statement v1 (thêm AI intervention point, mức chọn, rủi ro và người kiểm tra), bảng thay đổi v0 → v1 ở 4 trường, 5 tiêu chí đánh giá đầu ra AI
+- Viết mục 8: chấm 4 rủi ro, quyết định Not Yet cho bước AI + chạy Rule ngay, 4 ngưỡng dừng
+- Tạo file `cp4-interview-snapshot-2.md`, `cp4-interview-snapshot-3.md` cho các buổi phỏng vấn tiếp theo
 
 **Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
 
--
+- `TEAM.md` thông tin nhóm: commit `616d05a`
+- Mục 2.1, câu hỏi phản biện: commit `4656197`, `16e3778`, `96ad1e6`, `33bb354`, `9b49aac`, `55d6806`
+- Mục 2.2: commit `f4b2d0a`; mục 2.3: commit `8332e9c`
+- Mục 2.4: commit `ed50840`, `8871998`, `4331a5c`, `708137e`
+- Mục 3.1 và 3.3: commit `f04681f`
+- Mục 7 và 8: commit `b825410`
+- `report/assets/cp4-interview-snapshot-2.md`, `-3.md` và báo cáo cá nhân: commit `ef2573b`
 
 **Điều mình học được từ phần nhóm:**
 
