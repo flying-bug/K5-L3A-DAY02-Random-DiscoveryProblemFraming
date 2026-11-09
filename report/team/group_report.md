@@ -59,7 +59,7 @@ Những ý đã gạch bỏ vì là solution đội lốt opportunity:
 
 | Candidate | Actor rõ | Quy trình rõ | Pain có bằng chứng | Impact đo được | Vừa sức lab | So sánh được No AI/Rule/Workflow/Agent | Nhóm hiểu domain | Tổng |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| | | | | | | | | |
+| #10 Ưu tiên xử lý lỗ hổng sau security scan | 4 | 4 | 3 | 5 | 3 | 5 | 2 | **26** |
 | #11 Xác định nguyên nhân CI fail | 4 | 4 | 3 | 4 | 3 | 4 | 3 | 25 |
 | #4 Gom phản ánh khách hàng cùng một vấn đề | 4 | 4 | 3 | 2 | 3 | 4 | 2 | 22 |
 
