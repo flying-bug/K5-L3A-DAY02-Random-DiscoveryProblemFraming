@@ -60,8 +60,8 @@ Những ý đã gạch bỏ vì là solution đội lốt opportunity:
 | Candidate | Actor rõ | Quy trình rõ | Pain có bằng chứng | Impact đo được | Vừa sức lab | So sánh được No AI/Rule/Workflow/Agent | Nhóm hiểu domain | Tổng |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | | | | | | | | | |
-| | | | | | | | | |
-| | | | | | | | | |
+| #11 Xác định nguyên nhân CI fail | 4 | 4 | 3 | 4 | 3 | 4 | 3 | 25 |
+| #4 Gom phản ánh khách hàng cùng một vấn đề | 4 | 4 | 3 | 2 | 3 | 4 | 2 | 22 |
 
 **Candidate được chọn:** #10 — Khi security scan trả về danh sách lỗ hổng, DevOps muốn biết cái nào thật sự phải xử lý trước, để không chặn release và không bỏ sót lỗ hổng nghiêm trọng.
 
