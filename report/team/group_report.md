@@ -264,8 +264,8 @@ Phức tạp cao: Quy trình dự kiến gồm đọc kết quả scan → đố
 
 ### 6.4. Hai câu hỏi của Google PAIR
 
-- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**? Bằng chứng: Chọn augment: AI soạn nháp phần nhận định từ dữ liệu có sẵn; PM/PO kiểm tra, chỉnh sửa và gửi. Phỏng vấn cho thấy 2/3 người mất nhiều thời gian nhất ở phần narrative. Tuy nhiên, chưa có bằng chứng họ muốn giao hoàn toàn việc viết hoặc leadership chấp nhận bản nháp AI. Với team chỉ cần số liệu, ưu tiên template + dashboard.
-- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào: Ưu tiên tránh bỏ sót rủi ro/blocker có trong dữ liệu, vì có thể khiến leadership chậm can thiệp. Đây là đánh giá sơ bộ, cần xác nhận thêm với người dùng. Mỗi nhận định phải dẫn nguồn; thiếu thông tin phải ghi rõ. PM/PO đối chiếu rủi ro và số liệu trước khi gửi; AI không tự sửa số liệu hoặc gửi báo cáo.
+- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**? Bằng chứng: Đề xuất augment: AI tổng hợp bằng chứng và đề xuất ưu tiên; DevOps kiểm tra, người có thẩm quyền quyết định xử lý và release.
+- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào: Ưu tiên tránh bỏ sót lỗ hổng thực sự nghiêm trọng, vì có thể khiến hệ thống tiếp tục chịu rủi ro. Báo nhầm cũng cần đo vì gây tốn công và có thể chậm release. AI không tự bỏ qua finding hoặc quyết định release. Critical/High luôn được người duyệt; nhận định phải dẫn nguồn, thiếu dữ liệu phải ghi “chưa đủ thông tin”. Nếu AI lỗi hoặc không kiểm chứng được kết quả, DevOps quay về đánh giá thủ công.
 
 ---
 
