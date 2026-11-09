@@ -14,7 +14,7 @@
 |---:|---|---|---|---|
 | 1 |Đỗ Duy Bộ |2A202603591|Trưởng nhóm|https://github.com/flying-bug|
 | 2 |Phạm Tuấn Cường|2A202603584|Thành Viên|https://github.com/Ptuancuong|
-| 3 | | | | |
+| 3 |Nguyễn Đăng Doanh |2A202603597 |Thành viên|https://github.com/doanhnguyen28 |
 | 4 | | | | |
 
 Không ghi email hay số điện thoại vào bảng này, vì repo có thể để public.
