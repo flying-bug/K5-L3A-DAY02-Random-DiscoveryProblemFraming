@@ -193,24 +193,30 @@ Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng
 
 ## 6. Mức can thiệp AI (CP6)
 
+
 ### 6.1. Ma trận độ mơ hồ × độ phức tạp
 
-Bài của nhóm nằm ở ô:
+Bài của nhóm nằm ở ô: Độ mơ hồ cao × Độ phức tạp cao — đánh giá sơ bộ.
 
 Vì sao:
+
+Mơ hồ cao: Đánh giá một CVE có ảnh hưởng đến hệ thống phụ thuộc vào phiên bản, cách sử dụng dependency và môi trường triển khai. Thông tin có thể thiếu hoặc mâu thuẫn; không thể chỉ dựa vào mức độ nghiêm trọng để kết luận.
+
+Phức tạp cao: Quy trình dự kiến gồm đọc kết quả scan → đối chiếu quyết định cũ → tra thông tin CVE → xem ngữ cảnh hệ thống → đề xuất ưu tiên → người phụ trách duyệt. Dữ liệu đến từ nhiều nguồn và các bước phụ thuộc nhau.
 
 ### 6.2. So sánh 4 mức
 
 | Mức | Phương án cho bài của nhóm | Đủ khi nào | Rủi ro | Chọn? |
 |---|---|---|---|---|
-| **No AI** (sửa quy trình) | | | | |
-| **Rule** | | | | |
-| **Workflow** | | | | |
-| **Agent** | | | | |
+| **No AI** (sửa quy trình) | Chuẩn hóa checklist triage; lưu quyết định theo CVE, dependency, phiên bản, ngữ cảnh, người duyệt và thời hạn xem lại. | Thời gian chủ yếu mất vì thiếu quy trình hoặc không tìm lại được quyết định cũ. | Tái sử dụng quyết định đã hết phù hợp; thông tin không được cập nhật. | Là nền tảng cho mọi phương án. |
+| **Rule** | Chuẩn hóa và đối chiếu finding trùng; đánh dấu trường hợp cần kiểm tra; xếp thứ tự sơ bộ theo tiêu chí đã thống nhất. Giữ được danh sách đầy đủ để người duyệt xem. | Tiêu chí rõ và xử lý được phần lớn trường hợp mà không cần đọc hiểu ngữ cảnh phức tạp. | Quy tắc sai hoặc lọc quá mạnh khiến finding quan trọng bị ẩn. | Làm đối chứng trước |
+| **Workflow** | Rule xử lý dữ liệu có cấu trúc → AI tổng hợp bằng chứng và thông tin còn thiếu → DevOps kiểm tra, quyết định ưu tiên. | Sau khi áp dụng Rule, việc đọc và tổng hợp ngữ cảnh vẫn là bottleneck đáng kể. | AI diễn giải sai, dẫn nguồn không khớp hoặc kết luận quá mức từ dữ liệu thiếu. | Đề xuất thử có điều kiện. |
+| **Agent** | AI tự chọn bước tra cứu tiếp theo và công cụ trong phạm vi được cấp; người phụ trách vẫn duyệt quyết định cuối. | Các ca thực tế đòi hỏi đường đi linh hoạt mà Workflow định sẵn không đáp ứng được. | Khó kiểm soát phạm vi truy cập, số lượt thực hiện, chi phí và chuỗi suy luận sai. | Chưa chọn |
 
-**Mức chọn:**
+**Mức chọn:** Đề xuất Workflow có AI hỗ trợ tổng hợp bằng chứng, chưa đưa vào vận hành thực tế.
 
-**Vì sao không chọn mức đơn giản hơn:**
+**Vì sao không chọn mức đơn giản hơn:** No AI và Rule có thể giải quyết phần chuẩn hóa, đối chiếu và lưu quyết định. Giả thuyết còn cần kiểm chứng là phần đọc hiểu ngữ cảnh riêng của hệ thống vẫn chiếm nhiều thời gian sau các cải tiến này. Nếu thử nghiệm cho thấy No AI hoặc Rule đã đạt mục tiêu, nhóm sẽ chọn mức đó và bỏ bước AI. Hiện chưa đủ bằng chứng để khẳng định Workflow tốt hơn.
+ 
 
 ### 6.3. AI Canvas rút gọn
 
