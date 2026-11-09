@@ -24,13 +24,9 @@
 | 4 |Đỗ Duy Bộ|Khi khách hàng báo lỗi qua nhiều kênh, tôi muốn nhận ra những phản ánh cùng nói về một vấn đề, để biết vấn đề nào đang ảnh hưởng nhiều khách hàng nhất. |Nhân viên CSKH|đọc ~200 phản ánh và quyết định cái nào cùng một vấn đề, ~25 phút/tuần; khách mô tả cùng một lỗi bằng nhiều cách khác nhau nên dễ gom sai | |
 | 5 |Đỗ Duy Bộ|Khi cần làm theo một quy trình nội bộ, tôi muốn tìm được hướng dẫn đúng và còn hiệu lực, để hoàn thành công việc mà không phải hỏi đồng nghiệp nhiều lần.|Nhân viên|hỏi đồng nghiệp 6 lần và chờ trả lời, ~15 phút, vì tài liệu không ghi ngày hiệu lực và người phụ trách | |
 | 6 |Đỗ Duy Bộ|Khi bàn giao công việc, tôi muốn nắm được các quyết định, tài liệu và tiến độ liên quan, để tiếp nhận việc mà không phải hỏi lại từ đầu.|Nhân viên nhận bàn giao việc từ đồng nghiệp| đọc lại lịch sử chat/email để biết quyết định nào đã chốt và vì sao, ~12 phút | |
-| 7 | Nguyễn Minh Đạt | Khi bắt đầu bài lab hằng ngày, tôi muốn tìm đúng đề bài và phiên bản yêu cầu hiện hành, để bắt đầu làm đúng bài mà không phải hỏi lại | Học viên | Tìm tin nhắn hoặc đường dẫn đề bài: ước lượng 3 phút/lần trong tổng 5 phút |Bạn thường tìm đề bài lab ở đâu?
-Bạn mất bao lâu để tìm đúng đề bài?
-Bạn đã từng tìm nhầm hoặc dùng nhầm phiên bản đề bài chưa? |
+| 7 | Nguyễn Minh Đạt | Khi bắt đầu bài lab hằng ngày, tôi muốn tìm đúng đề bài và phiên bản yêu cầu hiện hành, để bắt đầu làm đúng bài mà không phải hỏi lại | Học viên | Tìm tin nhắn hoặc đường dẫn đề bài: ước lượng 3 phút/lần trong tổng 5 phút |Bạn thường tìm đề bài lab ở đâu? Bạn mất bao lâu để tìm đúng đề bài? Bạn đã từng tìm nhầm hoặc dùng nhầm phiên bản đề bài chưa? |
 | 8 | Nguyễn Minh Đạt | Khi chuẩn bị nộp bài lab mỗi tối, tôi muốn biết bài đã đáp ứng đủ yêu cầu nội dung và quy cách nộp, để tránh bị trừ điểm vì thiếu mục hoặc đặt tên sai | Học viên trực tiếp hoàn thiện và nộp bài lab | Đối chiếu từng yêu cầu với phần tương ứng trong bài: ước lượng 20 phút/bài | |
-| 9 | Nguyễn Minh Đạt | Khi tiếp nhận repo bài lab có nhiều tài liệu, tôi muốn xác định rõ đầu ra phải nộp và tiêu chí hoàn thành, để triển khai đúng ngay từ đầu và tránh sửa lại vì bỏ sót yêu cầu | Học viên lần đầu đọc repo của một bài lab | Đọc lại và tổng hợp yêu cầu: ước lượng 5-7 phút/bài. Dấu hiệu đã ghi nhận là phải đọc lại 2–3 lần/bài |Khi nhận repo mới, bạn mất bao lâu để hiểu yêu cầu?
-Bạn có thường phải đọc lại tài liệu nhiều lần không?
-Bạn đã từng bỏ sót yêu cầu hoặc phải sửa bài vì hiểu sai đề chưa?|
+| 9 | Nguyễn Minh Đạt | Khi tiếp nhận repo bài lab có nhiều tài liệu, tôi muốn xác định rõ đầu ra phải nộp và tiêu chí hoàn thành, để triển khai đúng ngay từ đầu và tránh sửa lại vì bỏ sót yêu cầu | Học viên lần đầu đọc repo của một bài lab | Đọc lại và tổng hợp yêu cầu: ước lượng 5-7 phút/bài. Dấu hiệu đã ghi nhận là phải đọc lại 2–3 lần/bài |Khi nhận repo mới, bạn mất bao lâu để hiểu yêu cầu? Bạn có thường phải đọc lại tài liệu nhiều lần không? Bạn đã từng bỏ sót yêu cầu hoặc phải sửa bài vì hiểu sai đề chưa?|
 | 10 | | | | | |
 | 11 | | | | | |
 | 12 | | | | | |
