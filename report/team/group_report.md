@@ -21,15 +21,15 @@
 | 1 |Phạm Tuấn Cường |Khi chuẩn bị nộp bài lab, tôi muốn đối chiếu bài mình với RUBRIC, CHECKPOINTS và SUBMISSION cùng lúc, để không mất điểm vì thiếu mục hoặc sai cấu trúc |Học viên |3 file hướng dẫn, khoảng 30 phút rà mỗi lab; lab trước bị trừ điểm vì sai tên file |Doanh: 30p rà soát gồm những bước nào, bước nào chiếm nhiều thời gian? |
 | 2 |Phạm Tuấn Cường |Khi nhóm chia việc làm lab, các bạn muốn biết ai đang làm phần nào, để không làm trùng|Thành viên nhóm |Lab trước 2 người cùng làm phần research; đếm được 8 tin "ai làm phần này?" trong chat nhóm |Đạt: Việc trùng xảy ra do phân công không rõ hay là không cập nhật thông tin|
 | 3 |Phạm Tuấn Cường |Khi bạn cùng lớp gặp lỗi git lúc gần deadline, họ muốn biết cách sửa nhanh, để kịp nộp bài|học viên |Tuần qua có 5 câu hỏi về lỗi git trên Discord lớp, 3 câu được hỏi sau 22h |Doanh: 5 câu hỏi đó gồm những lỗi nào?, có thuộc cùng 1 loại không?|
-| 4 | | | | | |
-| 5 | | | | | |
-| 6 | | | | | |
-| 7 | | | | | |
-| 8 | | | | | |
-| 9 | | | | | |
-| 10 | | | | | |
-| 11 | | | | | |
-| 12 | | | | | |
+| 4 |Đỗ Duy Bộ|Khi khách hàng báo lỗi qua nhiều kênh, tôi muốn nhận ra những phản ánh cùng nói về một vấn đề, để biết vấn đề nào đang ảnh hưởng nhiều khách hàng nhất. |Nhân viên CSKH|đọc ~200 phản ánh và quyết định cái nào cùng một vấn đề, ~25 phút/tuần; khách mô tả cùng một lỗi bằng nhiều cách khác nhau nên dễ gom sai | |
+| 5 |Đỗ Duy Bộ|Khi cần làm theo một quy trình nội bộ, tôi muốn tìm được hướng dẫn đúng và còn hiệu lực, để hoàn thành công việc mà không phải hỏi đồng nghiệp nhiều lần.|Nhân viên|hỏi đồng nghiệp 6 lần và chờ trả lời, ~15 phút, vì tài liệu không ghi ngày hiệu lực và người phụ trách | Đạt: Vì sao bạn xác định nguyên nhân là thiếu ngày hiệu lực và người phụ trách? Có trường hợp tài liệu đủ hai thông tin này nhưng vẫn phải hỏi không? |
+| 6 |Đỗ Duy Bộ|Khi bàn giao công việc, tôi muốn nắm được các quyết định, tài liệu và tiến độ liên quan, để tiếp nhận việc mà không phải hỏi lại từ đầu.|Nhân viên nhận bàn giao việc từ đồng nghiệp| đọc lại lịch sử chat/email để biết quyết định nào đã chốt và vì sao, ~12 phút |Cường:Việc nhận bàn giao này diễn ra với tần suất nào (hàng ngày hay chỉ vài tháng một lần khi có người nghỉ/chuyển dự án)? 12 phút đọc lịch sử có đủ lớn để giải quyết so với các công việc lặp đi lặp lại hàng ngày không |
+| 7 | Nguyễn Minh Đạt | Khi bắt đầu bài lab hằng ngày, tôi muốn tìm đúng đề bài và phiên bản yêu cầu hiện hành, để bắt đầu làm đúng bài mà không phải hỏi lại | Học viên | Tìm tin nhắn hoặc đường dẫn đề bài: ước lượng 3 phút/lần trong tổng 5 phút |Bộ: Bạn thường tìm đề bài lab ở đâu? Bạn mất bao lâu để tìm đúng đề bài? Bạn đã từng tìm nhầm hoặc dùng nhầm phiên bản đề bài chưa? |
+| 8 | Nguyễn Minh Đạt | Khi chuẩn bị nộp bài lab mỗi tối, tôi muốn biết bài đã đáp ứng đủ yêu cầu nội dung và quy cách nộp, để tránh bị trừ điểm vì thiếu mục hoặc đặt tên sai | Học viên trực tiếp hoàn thiện và nộp bài lab | Đối chiếu từng yêu cầu với phần tương ứng trong bài: ước lượng 20 phút/bài | |
+| 9 | Nguyễn Minh Đạt | Khi tiếp nhận repo bài lab có nhiều tài liệu, tôi muốn xác định rõ đầu ra phải nộp và tiêu chí hoàn thành, để triển khai đúng ngay từ đầu và tránh sửa lại vì bỏ sót yêu cầu | Học viên lần đầu đọc repo của một bài lab | Đọc lại và tổng hợp yêu cầu: ước lượng 5-7 phút/bài. Dấu hiệu đã ghi nhận là phải đọc lại 2–3 lần/bài |Bộ: Bạn đã từng bỏ sót yêu cầu hoặc phải sửa bài vì hiểu sai đề chưa?|
+| 10 |Nguyễn Đăng Doanh |Khi bước security scan trong pipeline trả về danh sách lỗ hổng, tôi muốn biết cái nào thật sự phải xử lý trước, để không chặn release và không bỏ sót lỗ hổng nghiêm trọng |Devops, Team Lead |Tra và đánh giá ngữ cảnh từng CVE: 65 phút/lần scan | |
+| 11 |Nguyễn Đăng Doanh |Khi pipeline CI của một PR bị fail, tôi muốn biết nhanh fail do code, do test hay do hạ tầng, để trả lời dev và re-run hoặc sửa đúng chỗ |Dev, DevOps |Đọc log dài để tìm lỗi gốc: ~15 phút/lần | |
+| 12 |Nguyễn Đăng Doanh |Khi deploy bản mới lên production, tôi muốn chắc chắn đã làm đủ các bước trước và sau deploy, để không gây sự cố vì quên bước |DevOps |Smoke test thủ công các luồng chính: ~12 phút/lần | |
 
 ### 2.2. Cluster
 
