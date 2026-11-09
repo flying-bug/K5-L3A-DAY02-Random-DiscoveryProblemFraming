@@ -5,10 +5,12 @@
 
 ## 1. Thông tin nhóm
 
-- Tên nhóm:
+- Tên nhóm: Random
 - Thành viên: xem `TEAM.md`
-- Candidate problem được chọn (1 câu):
-- Quyết định cuối: Go / Not Yet / No-Go
+- Candidate problem được chọn (1 câu): Khi dependency/container scan trong CI/CD trả về ~40 finding mỗi lần, DevOps ở team nhiều repo mất ~65 phút để biết finding nào thật sự phải xử lý, trong đó ~30 phút là đánh giá CVE có thật sự ảnh hưởng hệ thống hay không.
+
+- Quyết định cuối: Not Yet cho bước AI (Workflow); Go cho pilot phần Rule trong 2 tuần.
+
 
 ---
 
@@ -36,9 +38,9 @@
 | Cluster                                     | Các candidate                                                                             | Pattern chung                                                                                             |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | A — Kiểm đủ trước khi giao đi               | #1, #8 (kiểm bài trước khi nộp), #12 (kiểm bước trước/sau deploy)                         | Trước một mốc cố định (nộp bài, deploy), phải tự đối chiếu với một danh sách yêu cầu/bước, dễ sót khi vội |
-| B — Tìm và hiểu đúng thông tin hiện hành    | #5 (quy trình nội bộ), #6 (bàn giao), #7 (tìm đúng đề bài), #9 (xác định đầu ra phải nộp) | Thông tin cần dùng nằm rải rác ở nhiều nơi, không rõ bản nào còn hiệu lực nên phải đọc lại hoặc hỏi lại   |
+| B — Tìm và hiểu đúng thông tin hiện hành    | #2 (gom deadline rải rác LMS/Discord/email), #5 (quy trình nội bộ), #6 (bàn giao), #7 (tìm đúng đề bài), #9 (xác định đầu ra phải nộp) | Thông tin cần dùng nằm rải rác ở nhiều nơi, không rõ bản nào còn hiệu lực nên phải đọc lại hoặc hỏi lại   |
 | C — Phân loại và ưu tiên lượng lớn tín hiệu | #4 (phản ánh khách hàng), #10 (danh sách CVE), #11 (log CI fail)                          | Phải đọc nhiều đầu vào không có cấu trúc để xếp loại và chọn cái cần xử lý trước                          |
-| D — Câu hỏi lặp lại giữa người với người    | #2 (ai làm phần nào), #3 (lỗi git trên Discord)                                           | Cùng một câu hỏi bị hỏi lại nhiều lần vì thông tin không nằm ở chỗ chung ai cũng thấy                     |
+| D — Mất thời gian vì lỗi cài đặt | #3 (cài môi trường chạy code mẫu) | Lỗi phiên bản/môi trường lặp lại ở mỗi lab, mất thời gian giờ học trước khi bắt đầu làm bài |
 
 ### 2.3. Opportunity Solution Tree rút gọn
 
@@ -73,7 +75,7 @@ Những ý đã gạch bỏ vì là solution đội lốt opportunity:
 
 **Vì sao loại các candidate còn lại:**
 
-- #11 (CI fail): điểm gần bằng #10, nhưng mỗi lần chỉ ~15 phút và chưa có số lần fail/tuần (câu hỏi của Bộ chưa có số liệu trả lời). Hậu quả khi chẩn đoán sai chủ yếu là mất thời gian re-run, nhẹ hơn để lọt lỗ hổng bảo mật.
+- #11 (CI fail): điểm gần bằng #10, nhưng mỗi lần chỉ ~10 phút và chưa có số lần fail/tuần (câu hỏi của Bộ chưa có số liệu trả lời). Hậu quả khi chẩn đoán sai chủ yếu là mất thời gian re-run, nhẹ hơn để lọt lỗ hổng bảo mật.
 - #4 (phản ánh khách hàng): bottleneck chỉ ~25 phút/tuần cho 1 người. Khi Doanh hỏi về lần gom sai gần nhất, Bộ chưa đưa được ví dụ cụ thể . Nội dung phản ánh có thông tin cá nhân của khách nên rủi ro về dữ liệu cao. Trong nhóm chỉ Bộ có trải nghiệm.
 
 **Xử lý bất đồng (nếu có):** Bộ ban đầu muốn chọn #4 vì có số liệu của chính mình, nhưng đồng ý chọn #10 vì impact và hậu quả lớn hơn. Nhóm lo #10 chỉ có Doanh hiểu domain, nên thống nhất Doanh giải thích quy trình scan cho cả nhóm và hẹn 2–3 người làm DevOps/dev ngoài nhóm để phỏng vấn ở CP4.
@@ -86,11 +88,11 @@ Những ý đã gạch bỏ vì là solution đội lốt opportunity:
 
 |   # | Giả định                                                                                                                                                 | Loại (Value / Usability / Feasibility / Viability) | Quan trọng (1–5) | Đã có bằng chứng (1–5) | Kiểm chứng trước?       |
 | --: | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------: | ---------------------: | ----------------------- |
-|   1 | DevOps/dev ngoài nhóm cũng mất ≥ 30 phút cho mỗi lần triage kết quả security scan, và việc này lặp lại ≥ 1 lần/tuần                                      | Value                                              |                5 |                      2 | ✅ Ưu tiên 1            |
+|   1 | DevOps/dev ngoài nhóm cũng mất ≥ 30 phút cho mỗi lần triage kết quả security scan, và việc này lặp lại ≥ 1 lần/tuần                                      | Value                                              |                5 |                      3 | ✅ Ưu tiên 1            |
 |   2 | Phần lớn finding (≥ 50%) mỗi lần scan là nhiễu nhận ra được bằng dấu hiệu rõ: package chỉ dùng lúc build/test, chưa có bản vá, hoặc trùng lần scan trước | Value                                              |                5 |                      2 | ✅ Ưu tiên 2            |
-|   3 | Bước tốn thời gian nhất là đánh giá CVE có thật sự ảnh hưởng hệ thống (chiếm ≥ 1/2 thời gian triage), không phải bước lọc nhiễu                          | Value                                              |                5 |                      1 | ✅ Ưu tiên 3            |
-|   4 | Triage chậm đã từng làm trễ release ít nhất 1 lần trong 3 tháng gần nhất                                                                                 | Value                                              |                4 |                      1 | ✅                      |
-|   5 | Scanner team đang dùng đã có sẵn tính năng lọc (theo mức nghiêm trọng, bỏ lỗ hổng chưa có bản vá, bỏ qua theo mã CVE) nhưng chưa bật hoặc chưa cấu hình  | Feasibility                                        |                4 |                      1 | ✅                      |
+|   3 | Bước tốn thời gian nhất là đánh giá CVE có thật sự ảnh hưởng hệ thống (chiếm ≥ 1/2 thời gian triage), không phải bước lọc nhiễu                          | Value                                              |                5 |                      3 | ✅ Ưu tiên 3            |
+|   4 | Triage chậm đã từng làm trễ release ít nhất 1 lần trong 3 tháng gần nhất                                                                                 | Value                                              |                4 |                      2 | ✅                      |
+|   5 | Scanner team đang dùng đã có sẵn tính năng lọc (theo mức nghiêm trọng, bỏ lỗ hổng chưa có bản vá, bỏ qua theo mã CVE) nhưng chưa bật hoặc chưa cấu hình  | Feasibility                                        |                4 |                      3 | ✅                      |
 |   6 | Công ty cho phép đưa thông tin lỗ hổng và đoạn code vào công cụ AI bên ngoài                                                                             | Viability                                          |                5 |                      1 | — Hỏi Team Lead sau lab |
 
 _Điền 4–6 giả định; xóa dòng thừa._
@@ -99,26 +101,33 @@ Giả định nhóm kiểm chứng trong buổi này: #1 → #5. Cách kiểm: p
 
 ### 3.2. Kiểm chứng
 
-Cách đã dùng: Phỏng vấn / Survey / Log, ticket, review
+Cách đã dùng: Phỏng vấn 3 người ngoài nhóm theo The Mom Test (hỏi về lần scan gần nhất, không hỏi ý kiến về giải pháp).
 
-Interview snapshot (mỗi buổi phỏng vấn một bảng, hoặc đặt file trong `report/assets/cp4-interview-snapshot-N.md`):
+Interview snapshot:
 
-| Trường                                            | Nội dung |
-| ------------------------------------------------- | -------- |
-| Người được hỏi (vai trò, không ghi tên thật)      |          |
-| Câu nói đáng nhớ nhất (nguyên văn)                |          |
-| Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? |          |
-| Hiện đang xử lý bằng cách nào (workaround)?       |          |
-| Mất bao lâu, bao lần?                             |          |
-| Insight / opportunity rút ra                      |          |
+- [Snapshot 1 — Backend Engineer](../assets/cp4-interview-snapshot-1.md)
+- [Snapshot 2 — Backend dev kiêm DevOps, team nhỏ 2 repo, dùng Dependabot](../assets/cp4-interview-snapshot-2.md)
+- [Snapshot 3 — DevOps phụ trách CI/CD cho nhiều repo backend](../assets/cp4-interview-snapshot-3.md)
+
 
 Tổng hợp:
 
 | Nguồn | Số người / số mẫu | Tín hiệu xác nhận | Tín hiệu phản bác |
 | ----- | ----------------: | ----------------- | ----------------- |
-|       |                   |                   |                   |
+| Snapshot 1 — Backend Engineer | 1 | Tuần trước PR bị chặn vì 8 finding Critical trong thư viện xử lý ảnh mà service không dùng tới phần lỗi; tự kiểm 20–30'/lần, 1–2 lần/tuần, chờ DevOps xác nhận mất nửa buổi. Xác nhận Opportunity A và B; cho thấy dev cũng chịu pain | Vấn đề chính không phải tốc độ scan mà là không tin được kết quả scan |
+| Snapshot 2 — Backend dev kiêm DevOps (2 repo) | 1 | Chưa bật auto-triage rules của Dependabot dù có sẵn (xác nhận giả định #5) | Pain thấp: ~20 phút/tuần, chưa từng trễ release vì scan; có bản vá thì merge PR nâng version, ít khi đọc CVE. Ở team nhỏ, No AI là đủ |
+| Snapshot 3 — DevOps nhiều repo | 1 | 25 finding/lần, 45'/lần, 2 lần/tuần; "Mất thời gian nhất là biết cảnh báo này có ảnh hưởng cách mình đang dùng thư viện không" → xác nhận bottleneck là bước đánh giá ngữ cảnh. Nhiều CVE lặp lại lần trước, phải tìm lại ticket (Opportunity C) | Cho rằng đánh giá ngữ cảnh vẫn cần người có chuyên môn; chưa đủ cơ sở kết luận cần AI |
+| **Tổng** | 3 người| 2/3 người gặp pain ≥ 20–45'/lần, lặp lại hằng tuần | 1/3 người (team nhỏ) không thấy pain đáng giải |
+
 
 **Nhóm đã sửa problem thế nào sau kiểm chứng:**
+1. **Thu hẹp Actor:** từ "DevOps nói chung" thành DevOps ở team **nhiều repo/service, scan nhiều lần mỗi tuần**. Team nhỏ 1–2 repo không thuộc phạm vi vì nâng version theo Dependabot đã đủ (snapshot 2).
+2. **Mở rộng Impact:** thêm dev chủ PR bị chặn, phải tự kiểm 20–30' rồi chờ DevOps xác nhận (snapshot 1). Pain không chỉ là thời gian của DevOps mà còn là **không tin được kết quả scan**.
+3. **Giữ bottleneck, tăng độ tin cậy:** bước đánh giá CVE có ảnh hưởng hệ thống không được 2/3 người xác nhận là bước tốn thời gian nhất (snapshot 1, 3).
+4. **Nâng phương án No AI:** lưu quyết định cũ theo mã CVE (kèm lý do, ngày hết hạn) trở thành phần bắt buộc của pilot Rule, vì snapshot 3 cho thấy nhiều CVE lặp lại mà phải tìm lại ticket.
+5. **Hạ độ chắc của metric "release bị chặn oan":** phỏng vấn chỉ thấy PR bị chặn, chưa thấy release bị trễ. Metric này chỉ giữ nếu log 8 lần scan gần nhất xác nhận được (mục 8.2).
+6. **Value giữ mức TB:** 2/3 người xác nhận pain, nhưng mẫu nhỏ, có 1 tín hiệu phản bác rõ, và giả định #2 chưa có tỉ lệ.
+
 
 ### 3.3. Research giải pháp đã có
 
@@ -160,7 +169,6 @@ HIỆN TẠI — 5 bước, khoảng 65 phút/lần scan, 3 lần/tuần, 5/5 b�
 
 **Bottleneck chính:** Bước 4, đánh giá CVE có thật sự ảnh hưởng hệ thống mình không, mất khoảng 30/65 phút (≈ 46%). Bước 2 và 3 cộng thêm khoảng 20 phút là việc lặp lại, giải được bằng Rule.
 
-_Thời gian từng bước là ước lượng từ con số 65 phút của Doanh. Cần kiểm lại bằng phỏng vấn ở CP4 (giả định #1, #2, #3)._
 
 ### 4.2. Quy trình tương lai
 
@@ -209,7 +217,7 @@ Nếu chỉ dùng Rule (bỏ bước 3 AI), thời gian ước lượng còn kho
 | Trường | Nội dung |
 |---|---|
 | **Actor** |DevOps engineer phụ trách tích hợp dependency/container scan vào CI/CD ở một team phát triển ~20–50 dev; gián tiếp là dev chủ repo nhận ticket sửa lỗ hổng |
-| **Quy trình** |Mỗi lần scan chạy trên nhánh main hoặc trước release (3 lần/tuần): Mỗi lần scan (3 lần/tuần): mở báo cáo, xuất ~40 finding → lọc nhiễu thủ công → tra lại quyết định cũ trong chat/ticket → đánh giá ngữ cảnh ~10 finding còn lại → xếp ưu tiên, tạo ticket, báo Team Lead nếu chặn release |
+| **Quy trình** |Mỗi lần scan chạy trên nhánh main hoặc trước release (3 lần/tuần): mở báo cáo, xuất ~40 finding → lọc nhiễu thủ công → tra lại quyết định cũ trong chat/ticket → đánh giá ngữ cảnh ~10 finding còn lại → xếp ưu tiên, tạo ticket, báo Team Lead nếu chặn release |
 | **Bottleneck** |Bước đánh giá ngữ cảnh ~10 finding còn lại sau khi lọc (CVE có thật sự ảnh hưởng hệ thống mình không): ~30 trên tổng ~65 phút mỗi lần |
 | **Impact** |DevOps mất ~3 giờ/tuần cho việc lặp lại; ~2 lần/tháng release bị chặn bởi finding sau đó được xác định là không ảnh hưởng; khi có quá nhiều cảnh báo, lỗ hổng thật dễ bị bỏ sót và dev mất niềm tin vào scan |
 | **Success Metric** (baseline → target, cách đo) |(1) Thời gian triage: ~65'/lần → dưới 30'/lần; đo bằng DevOps tự ghi thời gian mỗi lần scan trong 4 tuần. (2) Release bị chặn oan (finding chặn release, sau đó được đánh dấu "không ảnh hưởng"): ~2/tháng → 0; đếm qua lịch sử pipeline và ignore file. (3) Guardrail: 0 finding Critical có bản vá bị bỏ qua sai; rà lại toàn bộ finding bị bỏ qua vào cuối mỗi tuần. Baseline hiện là ước lượng, sẽ bấm giờ lại ở 2 lần scan tới. |
@@ -248,7 +256,7 @@ Theo ma trận, ô này hợp với Workflow có AI ở một bước, không c�
 | **Workflow** | Rule xử lý dữ liệu có cấu trúc → AI tổng hợp bằng chứng và thông tin còn thiếu → DevOps kiểm tra, quyết định ưu tiên. | Sau khi áp dụng Rule, việc đọc và tổng hợp ngữ cảnh vẫn là bottleneck đáng kể. | AI diễn giải sai, dẫn nguồn không khớp hoặc kết luận quá mức từ dữ liệu thiếu. | Đề xuất thử có điều kiện. |
 | **Agent** | AI tự chọn bước tra cứu tiếp theo và công cụ trong phạm vi được cấp; người phụ trách vẫn duyệt quyết định cuối. | Các ca thực tế đòi hỏi đường đi linh hoạt mà Workflow định sẵn không đáp ứng được. | Khó kiểm soát phạm vi truy cập, số lượt thực hiện, chi phí và chuỗi suy luận sai. | Chưa chọn |
 
-**Mức chọn:** (Rule + AI ở một bước + người duyệt), triển khai 2 giai đoạn. Giai đoạn 1 chỉ chạy phần Rule trong 2 tuần; giai đoạn 2 (bước AI) ở trạng thái Not Yet, chỉ bật khi Rule chưa đạt target, đã có tập đánh giá và được phép sử dụng dữ liệu.
+**Mức chọn:** Workflow (Rule + AI ở một bước + người duyệt), triển khai 2 giai đoạn. Giai đoạn 1 chỉ chạy phần Rule trong 2 tuần; giai đoạn 2 (bước AI) ở trạng thái Not Yet, chỉ bật khi Rule chưa đạt target, đã có tập đánh giá và được phép sử dụng dữ liệu.
 
 **Vì sao không chọn mức đơn giản hơn:** Theo ước lượng ở mục 4.2, chỉ dùng No AI + Rule thì thời gian còn khoảng 40'/lần: bước lọc nhiễu và tra quyết định cũ (~20') gần như biến mất, nhưng bước đánh giá ngữ cảnh vẫn nguyên ~30', nên chưa đạt target ≤ 30'/lần. Phần còn lại là đọc advisory và đối chiếu với code, tức đọc hiểu văn bản không có cấu trúc mà Rule không làm được, nên mới cần AI ở đúng bước này. Đây là giả thuyết: vì vậy nhóm chạy Rule trước, và nếu sau 2 tuần Rule đã đạt ≤ 30'/lần thì dừng ở Rule.
  
@@ -261,12 +269,13 @@ Theo ma trận, ô này hợp với Workflow có AI ở một bước, không c�
 | **Judgment** — con người cân nhắc, quyết định gì? | DevOps kiểm trích dẫn và quyết định finding có ảnh hưởng không; Team Lead duyệt finding Critical bị đánh giá "không ảnh hưởng" và mọi quyết định chặn release |
 | **Action** — hành động cuối cùng là gì, ai làm? | DevOps tạo ticket cho dev hoặc ghi quyết định bỏ qua vào .trivyignore kèm lý do và ngày hết hạn. AI không tự bỏ qua cảnh báo, sửa code hoặc cho phép release. |
 | **Outcome** — đo kết quả bằng gì? | Thời gian triage từ khoảng 65 → ≤30 phút/lần, tính cả thời gian review; không có Critical/High bị bỏ qua sai, kể cả chưa có bản vá. Tỉ lệ đề xuất AI bị người duyệt đổi kết luận ≤30%. Baseline cần đo lại; Workflow phải được so sánh với phương án chỉ dùng Rule. |
-| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | Kết quả scan, CVE, phiên bản dependency, ngữ cảnh hệ thống và quyết định cũ. Chưa xác nhận đủ dữ liệu và quyền sử dụng. |
-| **Feedback** — lấy phản hồi ở đâu để cải thiện? | Ghi chỉnh sửa của người duyệt và lỗi trên tập mẫu để cải thiện prompt, rule và đầu vào. |
+| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | Với mỗi finding còn lại: (1) JSON của Trivy/Dependabot gồm mã CVE, package, phiên bản đang dùng, phiên bản có bản vá: có sẵn; (2) lockfile (`package-lock.json`, `requirements.txt`…): có sẵn trong repo; (3) nội dung advisory NVD/GitHub Advisory: công khai; (4) đoạn code import/gọi package bị lỗi: có trong repo nhưng chưa được phép gửi ra AI bên ngoài (giả định #6); (5) quyết định cũ: hiện nằm rải rác trong chat/ticket, chỉ có dạng chuẩn (`.trivyignore`) sau pilot Rule |
+| **Feedback** — lấy phản hồi ở đâu để cải thiện? | Log duyệt: mỗi finding ghi nhãn AI đưa ra, kết luận cuối của DevOps và lý do nếu khác; cộng thêm các finding bị bỏ qua nhưng lần rà cuối tuần phát hiện là có ảnh hưởng. Dùng để chấm lại theo 5 tiêu chí ở mục 7 và sửa prompt/rule |
+
 
 ### 6.4. Hai câu hỏi của Google PAIR
 
-- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**? Bằng chứng: Đề xuất augment: AI tổng hợp bằng chứng và đề xuất ưu tiên; DevOps kiểm tra, người có thẩm quyền quyết định xử lý và release.
+- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**? **Augment.** Bằng chứng: snapshot 1, người dùng không tin kết quả scan ("Scan thì nhanh nhưng có chắc là báo lỗi đúng không?") nên muốn tự kiểm lại; snapshot 3, đánh giá ngữ cảnh "vẫn cần người có chuyên môn". Vì vậy AI chỉ tóm tắt advisory và gắn nhãn kèm trích dẫn; việc xếp ưu tiên do Rule (CVSS + EPSS) làm; DevOps quyết định, Team Lead duyệt khi có thể chặn release.
 - AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào: Ưu tiên tránh bỏ sót lỗ hổng thực sự nghiêm trọng, vì có thể khiến hệ thống tiếp tục chịu rủi ro. Báo nhầm cũng cần đo vì gây tốn công và có thể chậm release. AI không tự bỏ qua finding hoặc quyết định release. Critical/High luôn được người duyệt; nhận định phải dẫn nguồn, thiếu dữ liệu phải ghi “chưa đủ thông tin”. Nếu AI lỗi hoặc không kiểm chứng được kết quả, DevOps quay về đánh giá thủ công.
 
 ---
@@ -275,11 +284,11 @@ Theo ma trận, ô này hợp với Workflow có AI ở một bước, không c�
 
 | Trường | Nội dung |
 |---|---|
-| **Actor** | DevOps engineer phụ trách triage kết quả dependency/container scan trong CI/CD ở team phát triển ~20–50 dev. Team Lead duyệt các finding có thể chặn release; dev chủ module nhận ticket sửa lỗ hổng |
+| **Actor** | DevOps engineer phụ trách triage kết quả dependency/container scan trong CI/CD ở team có nhiều repo/service (~20–50 dev, scan nhiều lần mỗi tuần); không áp dụng cho team nhỏ 1–2 repo (snapshot 2). Team Lead duyệt các finding có thể chặn release; dev chủ PR/module bị chặn khi scan báo lỗi và nhận ticket sửa lỗ hổng (snapshot 1) |
 | **Quy trình** | Mỗi lần scan (3 lần/tuần, theo Doanh): mở báo cáo, xuất ~40 finding → lọc nhiễu thủ công → tra lại quyết định cũ trong chat/ticket → đánh giá ngữ cảnh ~10 finding còn lại → xếp ưu tiên, tạo ticket, báo Team Lead nếu chặn release |
 | **Bottleneck** | Bước đánh giá ngữ cảnh (CVE có thật sự ảnh hưởng hệ thống không): ~30/65 phút mỗi lần. Phụ: lọc nhiễu và tra quyết định cũ ~20 phút, là việc lặp lại |
-| **Impact** | ~65 phút/lần × 3 lần/tuần ≈ 3 giờ/tuần cho 1 DevOps (số liệu tự báo cáo của Doanh, chưa kiểm chứng với người ngoài nhóm). Theo Doanh, ~2 lần/tháng release bị chặn bởi finding sau đó được xác định là không ảnh hưởng (chưa kiểm chứng). Khi có quá nhiều cảnh báo, lỗ hổng thật dễ bị bỏ sót |
-| **Success Metric** (baseline → target, cách đo) | (1) Thời gian triage, **tính cả thời gian người duyệt**: ~65'/lần → ≤ 30'/lần; DevOps tự ghi giờ trong 4 tuần (~12 lần scan). (2) Guardrail: **0 finding Critical/High bị bỏ qua sai**, kể cả finding chưa có bản vá; 2 tuần đầu DevOps vẫn đánh giá thủ công song song để đối chiếu, sau đó rà danh sách bị bỏ qua vào cuối mỗi tuần. (3) Tỉ lệ đề xuất của AI mà DevOps phải đổi kết luận: ≤ 30%; đếm trong log duyệt. (4) Release bị chặn oan: ~2/tháng → 0; đếm qua lịch sử pipeline và ignore file |
+| **Impact** | DevOps: ~65 phút/lần × 3 lần/tuần ≈ 3 giờ/tuần (số liệu tự báo cáo của Doanh); một DevOps nhiều repo ngoài nhóm cũng mất ~45 phút/lần, 2 lần/tuần (snapshot 3). Dev: PR bị chặn bởi finding không ảnh hưởng, tự kiểm 20–30'/lần rồi chờ DevOps xác nhận nửa buổi (snapshot 1). Dev mất niềm tin vào kết quả scan nên lỗ hổng thật dễ bị bỏ sót. Release bị chặn oan ~2 lần/tháng theo Doanh, phỏng vấn chưa xác nhận |
+| **Success Metric** (baseline → target, cách đo) | (1) Thời gian triage, tính cả thời gian người duyệt: ~65'/lần → ≤ 30'/lần; DevOps tự ghi giờ trong 4 tuần (~12 lần scan). (2) Guardrail: 0 finding Critical/High bị bỏ qua sai, kể cả finding chưa có bản vá; 2 tuần đầu DevOps vẫn đánh giá thủ công song song để đối chiếu, sau đó rà danh sách bị bỏ qua vào cuối mỗi tuần. (3) Tỉ lệ đề xuất của AI mà DevOps phải đổi kết luận: ≤ 30%; đếm trong log duyệt. (4) Release bị chặn oan: ~2/tháng → 0; đếm qua lịch sử pipeline và ignore file. Chỉ giữ metric này nếu log 8 lần scan gần nhất xác nhận được baseline (giả định #4 còn trái chiều) |
 | **Boundary** | AI không tự bỏ qua finding, không sửa `.trivyignore` hay ticket, không sửa code hay nâng version, không chặn/mở release. Không đưa mã nguồn vào AI bên ngoài khi Team Lead chưa cho phép. Rule không được ẩn Critical chưa có bản vá. HITL: DevOps duyệt mọi đề xuất của AI; Team Lead duyệt mọi finding Critical bị đánh giá "không ảnh hưởng" hoặc có thể chặn release; mọi ngoại lệ có hạn tối đa 90 ngày |
 | **AI intervention point** | Sau bước Rule lọc nhiễu (phạm vi build/test, quyết định cũ còn hạn) và xếp hạng theo CVSS + EPSS; trước bước DevOps quyết định. AI chỉ xử lý ~10 finding còn lại: tóm tắt advisory, chỉ ra chỗ code import/gọi package bị lỗi, đề xuất "có thể ảnh hưởng / có vẻ không / chưa đủ thông tin", kèm trích dẫn |
 | **Mức chọn** | Workflow (Rule ở bước lọc và xếp hạng + AI ở 1 bước + người duyệt). Triển khai 2 giai đoạn: Rule trước; AI chỉ bật khi đủ điều kiện ở mục 8 |
@@ -291,8 +300,9 @@ Theo ma trận, ô này hợp với Workflow có AI ở một bước, không c�
 |---|---|---|---|
 | Success Metric | Thời gian ~65' → dưới 30'; release bị chặn oan → 0; guardrail chỉ cho Critical **có bản vá** | Thời gian tính **cả thời gian người duyệt**; guardrail mở rộng cho Critical/High **kể cả chưa có bản vá**; thêm metric tỉ lệ đề xuất AI phải đổi kết luận ≤ 30% | Research (3.3): `--ignore-unfixed` của Trivy ẩn cả Critical chưa có bản vá; Snyk ghi rõ "NO PATH FOUND" không có nghĩa là an toàn → phải đo độ tin cậy của đề xuất AI, không chỉ đo tốc độ. Nếu AI nhanh nhưng người phải sửa nhiều thì không đạt |
 | Boundary | Không tự bỏ qua, không tự chặn/mở release, không sửa ignore file/ticket | Thêm: không đưa mã nguồn vào AI bên ngoài khi chưa được phép; Rule không được ẩn Critical chưa có bản vá | Giả định #6 (Viability) chưa kiểm chứng; rủi ro từ research Trivy |
-| Actor | DevOps engineer; gián tiếp là dev chủ repo | Thêm Team Lead là người duyệt finding có thể chặn release | Quy trình 4.1 cho thấy bước 5 có handoff cho Team Lead; HITL cần ghi rõ ai duyệt |
-| Impact | Số liệu ghi như đã chắc chắn | Ghi rõ nguồn: số liệu của Doanh, chưa kiểm chứng | Phản biện ở mục 5: baseline là ước lượng của một người; giả định #4 ở 3.1 mới có bằng chứng = 1 |
+| Actor | DevOps engineer; gián tiếp là dev chủ repo | Thu hẹp còn team nhiều repo/service; thêm Team Lead là người duyệt; dev chủ PR là người chịu ảnh hưởng trực tiếp | Snapshot 2: team nhỏ 2 repo chỉ mất ~20'/tuần, nâng version là đủ. Snapshot 1: dev bị chặn PR. Quy trình 4.1 có handoff cho Team Lead |
+| Impact | Số liệu ghi như đã chắc chắn, chỉ nói thời gian của DevOps | Thêm số liệu từ snapshot 3 (45'/lần); thêm pain của dev bị chặn PR; ghi rõ "release bị chặn oan" chưa được phỏng vấn xác nhận | Kiểm chứng 3.2: 2/3 người xác nhận pain; snapshot 1 cho thấy pain về niềm tin vào kết quả scan; giả định #4 có tín hiệu trái chiều |
+
 
 **Tiêu chí đánh giá đầu ra của AI (3–5 tiêu chí):**
 
@@ -314,7 +324,7 @@ Tập đánh giá: 30–50 CVE mà team đã có quyết định (xử lý / b�
 
 | Rủi ro | Câu hỏi | Mức độ rủi ro (Thấp = an toàn / TB / Cao = nguy hiểm) | Lý do / bằng chứng |
 |---|---|---|---|
-| **Value** | Người dùng có thật sự cần và sẽ dùng không? | TB | Pain có số liệu: ~65 phút/lần × 3 lần/tuần (Doanh); research cho thấy nhiều công cụ (Dependabot, Trivy, Snyk) đều đang giải bài này, nên đây là pain phổ biến. Nhưng số liệu chủ yếu từ 1 người; giả định #4 (release bị trễ) chưa có bằng chứng. |
+| **Value** | Người dùng có thật sự cần và sẽ dùng không? | TB | Có bằng chứng: Doanh ~65'/lần × 3 lần/tuần; 2/3 người phỏng vấn ngoài nhóm xác nhận pain (snapshot 3: 45'/lần, 2 lần/tuần; snapshot 1: PR bị chặn nửa buổi vì finding không ảnh hưởng); nhiều công cụ (Dependabot, Trivy, Snyk) cùng giải bài này. Chưa xếp Thấp vì mẫu chỉ 3 người, team nhỏ không thấy pain (snapshot 2), giả định #2 chưa có tỉ lệ và #4 còn trái chiều |
 | **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | Thấp | DevOps vốn đã đọc báo cáo scan hằng tuần; đầu ra chỉ là danh sách đã lọc, xếp thứ tự, mỗi finding kèm đề xuất và trích dẫn để kiểm. Không phải học công cụ mới |
 | **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | TB | Phần Rule khả thi cao: kết quả scan có sẵn dạng JSON, Trivy/Dependabot có bộ lọc sẵn, EPSS miễn phí có API. Phần AI khó: phải hiểu code có thật sự gọi tới phần bị lỗi không; Snyk cũng chỉ GA cho Java, JS/TS, Python và ghi rõ kết quả không chắc chắn. Chưa có tập đánh giá; trong nhóm chỉ Doanh có domain |
 | **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | **Cao** (bước AI) / Thấp (bước Rule) | Bước AI phải gửi danh sách lỗ hổng chưa vá cùng đoạn code ra công cụ bên ngoài, tức là đưa cho bên thứ ba bản đồ điểm yếu của hệ thống; công ty chưa xác nhận có cho phép không (giả định #6). Bước Rule chạy nội bộ, công cụ miễn phí. DevOps vận hành, Team Lead chịu trách nhiệm chính sách |
@@ -352,7 +362,7 @@ Tập đánh giá: 30–50 CVE mà team đã có quyết định (xử lý / b�
 **Hạn chế:**
 
 - Baseline 65 phút/lần và 3 lần/tuần chủ yếu là số liệu ước lượng của một người (Doanh), chưa bấm giờ thật. Thời gian từng bước ở mục 4.1 là ước lượng chia ra từ con số 65 phút.
-- Kiểm chứng mới có [__ người / __ mẫu], mẫu nhỏ. Giả định #2 (≥ 50% finding là nhiễu), #4 (triage chậm làm trễ release) và #6 (công ty cho phép đưa dữ liệu vào AI bên ngoài) chưa có bằng chứng.
+- Kiểm chứng mới có 3 người (3 buổi phỏng vấn), mẫu nhỏ; 1/3 người (team nhỏ, 2 repo) cho tín hiệu phản bác. Giả định #2 (≥ 50% finding là nhiễu) mới có ví dụ, chưa có tỉ lệ; #4 (triage chậm làm trễ release) có tín hiệu trái chiều (PR bị chặn nhưng chưa thấy release bị trễ); #6 (công ty cho phép đưa dữ liệu vào AI bên ngoài) chưa kiểm.
 - Chưa có tập đánh giá cho bước AI, nên các tiêu chí ở mục 7 chưa được thử trên dữ liệu thật.
 - Trong nhóm chỉ Doanh có kinh nghiệm DevOps; các thành viên khác hiểu domain qua giải thích của Doanh và qua tài liệu.
 - Research mới dựa trên tài liệu chính thức, chưa chạy thử công cụ trên repo thật. Một số tính năng có giới hạn chưa đối chiếu được với stack của team: preset Dependabot chỉ áp dụng cho npm, reachability của Snyk chỉ GA cho Java, JS/TS, Python.

@@ -172,17 +172,61 @@ Trả lời bằng trải nghiệm thật của bạn, tối thiểu 200 từ ch
 
 **6.1. Tôi học được gì khi nghe top 3 problems của các bạn khác?**
 
+Mỗi người sẽ có những khó khăn nhất định với chính bản thân mình
+
+Card #8 của Đạt gần giống card #1 của mình ,cùng một pain.
+
+Problem của Doanh (#10, #11, #12) lấy từ impact lớn hơn hẳn problem về học tập: 65 phút/lần scan, ảnh hưởng tới release và bảo mật.
+
+Card #4 của Bộ có số liệu (~200 phản ánh, ~25 phút/tuần) nhưng khi bị hỏi "lần gom sai gần nhất" thì không có ví dụ ,con số thôi chưa đủ, cần một câu chuyện cụ thể hơn làm bằng chứng.
+
 **6.2. Nhóm có lúc nào bị "solution-first" (nghĩ giải pháp trước khi hiểu vấn đề) không? Lúc đó nhóm nhận ra và xử lý thế nào?**
+
+Có, khi vẽ cây OST: các ý "AI tự triage", "cần dashboard", "đổi sang công cụ scan khác" xuất hiện ngay ở tầng opportunity. Nhóm nhận ra vì đó là tên công cụ/tính năng, không phải pain, nên gạch bỏ.
+
+Bản thân mình: khi viết quy trình tương lai ở mục 4.2, ban đầu đặt bước AI vào luôn. Sau đó mới tính thử phương án "chỉ dùng Rule" (~40 phút/lần) để có mốc so sánh — chỉ khi Rule không đủ thì AI mới có lý do.
 
 **6.3. Tôi có đổi ý sau khi bị phản biện không? Kể một lần cụ thể.**
 
+Có. Doanh hỏi card  #1: "30 phút rà soát gồm những bước nào, bước nào lâu nhất?". Khi tách ra mới thấy đọc RUBRIC + đối chiếu chiếm ~20/30 phút, còn các bước kiểm tra cơ học chỉ ~10 phút. Trước đó mình nghĩ lỗi chủ yếu do sai tên file.
+
+Một lần khác: AI phản biện card #2 rằng đồng bộ lịch LMS và nhờ coach ghim tin có thể đã đủ. Đổi cảm nhận từ Workflow sang Rule.
+
 **6.4. Kết quả kiểm chứng (phỏng vấn/survey/research) có làm tôi bất ngờ không? Điều gì?**
+
+Bất ngờ 1: người ở team nhỏ (~8 dev) chỉ mất ~20 phút/tuần, cứ có bản vá là merge PR của Dependabot → problem chỉ đáng giải ở team lớn, nhiều repo.
+
+Bất ngờ 2: ở team nhiều repo, tra lại quyết định cũ lại lâu hơn đánh giá ngữ cảnh (35 vs 30 phút) → bottleneck tôi chọn ở mục 4.1 chưa chắc đúng cho mọi team.
+
+Bất ngờ 3 (từ research): Trivy, Dependabot đã có sẵn bộ lọc mà 3/3 người được hỏi chưa bật hết → phần lớn thời gian có thể giảm bằng Rule, không cần AI.
 
 **6.5. Điều khó nhất khi viết Problem Statement là gì?**
 
+Tôi không trực tiếp viết Problem Statement, nhưng mục 4 (quy trình) là đầu vào cho trường Quy trình và Bottleneck.
+
+Khó nhất là không có số liệu thật để chia 65 phút thành từng bước: con số ~40 finding/lần và thời gian từng bước đều là ước lượng, nên bottleneck "30/65 phút" dựa trên giả định.
+
+Khó thứ hai: giữ quy trình hiện tại không lẫn giải pháp — chỉ mô tả người ta đang làm gì, để Rule/AI sang phần quy trình tương lai.
+
 **6.6. Nếu làm lại, tôi sẽ đổi gì? Tôi sẽ phản biện nhóm mạnh hơn ở điểm nào?**
 
-**6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi _problem → quy trình → metric → boundary → mức can thiệp AI → quyết định_ của bài nhóm mình.
+Đổi: trước khi vẽ quy trình, đòi bằng được số liệu thật (bấm giờ 1–2 lần scan, số finding) thay vì tự chia con số 65 phút.
+
+Phản biện mạnh hơn: câu hỏi của mình "65 phút tính cho bao nhiêu CVE?" đến cuối vẫn chưa có câu trả lời thật nhưng nhóm vẫn đi tiếp. Nhóm cũng chọn #10 dù điểm "Nhóm hiểu domain" chỉ 2/5 và chỉ Doanh có kinh nghiệm DevOps — lẽ ra nên hỏi kỹ hơn về rủi ro này lúc chấm shortlist.
+
+**6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi _problem → quy trình → metric → boundary → mức can thiệp AI → quyết định_ của bài nhóm.
+
+Problem: DevOps ở team lớn mất ~65 phút mỗi lần triage kết quả security scan, 3 lần/tuần.
+
+Quy trình: mở báo cáo → lọc nhiễu → tra quyết định cũ → đánh giá ngữ cảnh → tạo ticket / báo Team Lead; bottleneck là đánh giá ngữ cảnh (~30 phút).
+
+Metric: thời gian triage (tính cả thời gian người duyệt) ≤ 30 phút/lần, và guardrail 0 finding Critical/High bị bỏ qua sai.
+
+Boundary: AI không tự bỏ qua finding, không sửa ignore file, không quyết release; Critical/High luôn có người duyệt; không đưa code ra AI bên ngoài khi chưa được phép.
+
+Mức can thiệp: Workflow (Rule lọc + xếp hạng → AI tổng hợp bằng chứng → người quyết), nhưng làm Rule trước.
+
+Quyết định: Not Yet cho bước AI vì rủi ro Viability cao; chạy Rule 2 tuần, nếu đã ≤ 30 phút thì dừng ở Rule.
 
 ---
 

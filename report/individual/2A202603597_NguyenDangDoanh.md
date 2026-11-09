@@ -65,9 +65,9 @@ Quy trình nháp hiện tại:
 ```text
 HIỆN TẠI — khoảng 65'/lần scan, 3 lần/tuần
 
-[Pipeline chạy scan: 10' (tự động)] → [Mở report, lọc severity: 17']
+[Pipeline chạy scan: 10' (tự động)] → [Mở report, lọc severity: 10']
 → [Tra CVE + đánh giá ngữ cảnh từng finding: 30'] ← BOTTLENECK
-→ [Đánh dấu / tạo ticket: 10'] → [Quyết định chặn/cho release: 3'] → [Ghi ngoại lệ: 5']
+→ [Đánh dấu / tạo ticket: 10'] → [Quyết định chặn/cho release: 3'] → [Ghi ngoại lệ: 2']
 ```
 
 ### Problem Card #2
@@ -145,7 +145,7 @@ HIỆN TẠI — khoảng 40 phút/lần deploy
 | Nhận phản biện | Câu hỏi tôi nhận được: Cường hỏi #10 "65 phút/lần scan đang tính cho bao nhiêu mã CVE? Tần suất bao nhiêu lần/tuần? Có thật sự làm chậm release không?"; Bộ hỏi #11 "Tuần qua bao nhiêu lần CI fail, bao nhiêu do code/test/hạ tầng?"; Đạt hỏi #12 "Vấn đề chính là quên bước hay smoke test mất thời gian?"| Tôi đã sửa gì: với #10, tách 65 phút thành 5 bước có số phút, ghi rõ ~40 finding/lần, 3 lần/tuần, và chỉ ra bottleneck thật là bước đánh giá ngữ cảnh ~30 phút chứ không phải cả 65 phút (mục 4.1). Với #12, nhận ra bằng chứng của mình đang nói về thời gian chứ không phải việc quên bước, nên card này yếu hơn và không đưa vào shortlist|
 | Gom cluster / cây OST |Viết cây OST ở mục 2.3 cho bài security scan: 1 outcome, 3 opportunity, gạch bỏ 3 ý là solution đội lốt |Cây OST làm nền cho việc tách phần Rule giải được (nhánh A, C) và phần còn mơ hồ (nhánh B) ở CP5–CP6 |
 | Chọn candidate problem |Giải thích quy trình scan cho cả nhóm vì chỉ tôi làm DevOps; cung cấp số liệu baseline cho #10 |Nhóm chọn #10; Bộ ban đầu muốn chọn #4 nhưng đồng ý #10 vì impact lớn hơn |
-| Kiểm chứng / research |Chuẩn bị bộ câu hỏi phỏng vấn theo The Mom Test cho DevOps/dev ngoài nhóm. Phần research công cụ ở mục 3.3 do Bộ phụ trách |Đã phỏng vấn 1 Backend Engineer |
+| Kiểm chứng / research |Chuẩn bị bộ câu hỏi phỏng vấn theo The Mom Test cho DevOps/dev ngoài nhóm. Phần research công cụ ở mục 3.3 do Bộ phụ trách |Đã phỏng vấn 1 Backend Engineer (snapshot 1); nhờ đó nhóm thêm dev bị chặn PR vào Impact và giữ boundary "AI chỉ đề xuất kèm trích dẫn". |
 | Quy trình nhóm |Cùng Cường viết mục 4: quy trình hiện tại, quy trình tương lai, bảng before/after |Quy trình cho thấy chỉ dùng Rule còn ~40 phút/lần, chưa đạt target 30 phút; con số này là lập luận chính cho mức Workflow ở CP6 |
 | Problem Statement |Góp phần viết Problem Statement v0 (mục 5); rà lại v0 và v1 cho khớp với quy trình ở mục 4|Sửa các chỗ v0 lệch với 4.1 (số bước, bottleneck, Impact ~3 giờ/tuần) |
 | Mức can thiệp AI |Góp ý mục 6.1 và 6.2: đổi ô ma trận sang "mơ hồ cao × phức tạp thấp", bổ sung lý do vì sao không chọn mức đơn giản hơn và vì sao không chọn Agent |Mục 6 nhất quán với lựa chọn Workflow 2 giai đoạn ở mục 7 |
@@ -187,7 +187,7 @@ Về phỏng vấn, điều làm tôi bất ngờ là góc nhìn của một Bac
 Khó nhất là viết Success Metric khi baseline chỉ là ước lượng của tôi. Bản nháp đầu tiên trước khi chốt v0 đặt target dưới 20 phút/lần, nhưng khi vẽ quy trình tương lai thì chính thiết kế của nhóm cũng mất khoảng 25 phút, nên phải đổi thành ≤ 30 phút. Ngoài ra metric chỉ đo thời gian thì có thể "đạt" bằng cách bỏ qua hết cảnh báo, nên phải thêm guardrail không bỏ sót Critical/High.
 
 **6.6. Nếu làm lại, tôi sẽ đổi gì? Tôi sẽ phản biện nhóm mạnh hơn ở điểm nào?**
-Tôi sẽ bấm giờ thật vài lần scan và hẹn trước 2–3 đồng nghiệp để phỏng vấn trước buổi học, vì phần kiểm chứng là chỗ yếu nhất của bài. Tôi cũng sẽ tự viết nhiều hơn thay vì để AI soạn nháp rồi sửa, vì có những con số AI ước lượng tôi phải đối chiếu lại nhiều lần. Về phản biện, tôi sẽ hỏi nhóm sớm hơn câu "nếu chỉ bật đúng cấu hình Trivy thì còn lại bao nhiêu phút?", vì câu đó quyết định có cần AI hay không.
+Tôi sẽ bấm giờ thật vài lần scan và hẹn trước 2–3 đồng nghiệp để phỏng vấn trước buổi học, vì phần kiểm chứng là chỗ yếu nhất của bài. Về phản biện, tôi sẽ hỏi nhóm sớm hơn câu "nếu chỉ bật đúng cấu hình Trivy thì còn lại bao nhiêu phút?", vì câu đó quyết định có cần AI hay không.
 
 **6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi *problem → quy trình → metric → boundary → mức can thiệp AI → quyết định* của bài nhóm mình.
 Problem: mỗi lần security scan ra khoảng 40 finding, DevOps mất khoảng 65 phút để biết cái nào thật sự phải xử lý, 3 lần mỗi tuần. Quy trình gồm 5 bước, trong đó bước nghẽn là đánh giá xem CVE có thật sự ảnh hưởng hệ thống không, khoảng 30 phút; lọc nhiễu và tra quyết định cũ thêm khoảng 20 phút. Metric là giảm thời gian triage xuống ≤ 30 phút/lần tính cả thời gian người duyệt, với guardrail không bỏ sót finding Critical/High nào. Boundary: AI không được tự bỏ qua finding, không sửa ignore file, không quyết định chặn hay mở release, và không nhận mã nguồn khi Team Lead chưa cho phép. Mức can thiệp là Workflow: Rule lọc nhiễu và xếp ưu tiên theo CVSS + EPSS, AI chỉ ở một bước gắn nhãn "có thể ảnh hưởng / có vẻ không / chưa đủ thông tin" kèm trích dẫn, DevOps quyết định. Không chọn Rule vì chỉ Rule còn khoảng 40 phút, chưa đạt target; không chọn Agent vì các bước đã cố định. Quyết định là Not Yet cho bước AI vì rủi ro Viability cao (chưa biết công ty cho đưa code ra ngoài không), nhưng Go cho phần Rule chạy thử 2 tuần; nếu Rule đã đạt ≤ 30 phút thì dừng ở Rule.

@@ -5,8 +5,9 @@
 ## Thông tin nhóm
 
 - Tên nhóm: Random
-- Candidate problem nhóm chọn (1 câu):
-- Quyết định cuối (Go / Not Yet / No-Go):
+- Candidate problem nhóm chọn (1 câu): Khi dependency/container scan trong CI/CD trả về ~40 finding mỗi lần, DevOps ở team nhiều repo mất ~65 phút để biết finding nào thật sự phải xử lý, trong đó ~30 phút là đánh giá CVE có thật sự ảnh hưởng hệ thống hay không.
+- Quyết định cuối (Go / Not Yet / No-Go): Not Yet cho bước AI (Workflow); Go cho pilot phần Rule trong 2 tuần.
+
 
 ## Thành viên
 
@@ -25,13 +26,14 @@ Gợi ý vai trò (một người có thể giữ nhiều vai): điều phối t
 
 | Checkpoint | Người chính | Người hỗ trợ | Sản phẩm |
 |---|---|---|---|
-| CP3 — Hội tụ nhóm | | | Cluster, cây OST, bảng chấm điểm |
-| CP4 — Kiểm chứng | | | Assumption map, snapshot hoặc survey |
-| CP4 — Research | | | Bảng research có link |
-| CP5 — Quy trình trước/sau | | | Quy trình + bảng before/after |
-| CP5 — Problem Statement v0 | | | Problem Statement v0 |
-| CP6 — Mức can thiệp + Problem Statement v1 | | | Ma trận, AI Canvas, eval, Problem Statement v1 |
-| CP6 — Quyết định | | | 4 rủi ro + Go/Not Yet/No-Go |
+| CP3 — Hội tụ nhóm | Đỗ Duy Bộ (cluster, chấm điểm shortlist), Nguyễn Đăng Doanh (cây OST) | Phạm Tuấn Cường, Nguyễn Minh Đạt (câu hỏi phản biện trong bảng pitch) | Cluster, cây OST, bảng chấm điểm |
+| CP4 — Kiểm chứng | Nguyễn Đăng Doanh (snapshot 1), Phạm Tuấn Cường (snapshot 2), Nguyễn Minh Đạt (snapshot 3) | Đỗ Duy Bộ (assumption map) | Assumption map, 3 interview snapshot |
+| CP4 — Research | Đỗ Duy Bộ | Nguyễn Đăng Doanh (giải thích Trivy/Dependabot, kiểm link) | Bảng research có link |
+| CP5 — Quy trình trước/sau | Nguyễn Đăng Doanh, Phạm Tuấn Cường | — | Quy trình + bảng before/after |
+| CP5 — Problem Statement v0 | Nguyễn Đăng Doanh | Nguyễn Minh Đạt (phản biện v0) | Problem Statement v0 |
+| CP6 — Mức can thiệp + Problem Statement v1 | Nguyễn Minh Đạt (ma trận, AI Canvas, PAIR), Đỗ Duy Bộ (Problem Statement v1, tiêu chí đánh giá) | Nguyễn Đăng Doanh (rà nhất quán mục 6–7) | Ma trận, AI Canvas, eval, Problem Statement v1 |
+| CP6 — Quyết định | Nguyễn Minh Đạt | Nguyễn Đăng Doanh, Đỗ Duy Bộ | 4 rủi ro + Go/Not Yet/No-Go |
+
 
 ## Cá nhân
 
@@ -103,22 +105,61 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 **Điều mình học được từ phần nhóm:**
 - Bottleneck phải là một bước cụ thể. Khi bị hỏi con số 65 phút gồm những gì, mình mới thấy chỉ khoảng 30 phút là phần thật sự khó, còn lại Rule làm được
 - Nên research công cụ có sẵn trước khi nghĩ tới AI: Trivy và Dependabot đã giải được phần lọc nhiễu, nên AI chỉ cần chen vào đúng một bước
-- Kiểm chứng với người thật cần chuẩn bị từ trước buổi học; nhóm chưa làm kịp phần này trong buổi nên Value vẫn chỉ ở mức TB
+- Kiểm chứng với người thật làm problem thay đổi: snapshot 2 cho thấy team nhỏ gần như không có pain nên nhóm thu hẹp Actor; snapshot 1 cho thấy dev cũng bị chặn PR. Lần sau nên hẹn phỏng vấn trước buổi học để có thời gian sửa problem
 
-### HoTen-MSSV
+### PhamTuanCuong-2A202603584
 
 **Phần việc phụ trách:**
 
--
+- Pitch 3 card #1, #2, #3 ở CP3; phản biện card #6 (Bộ), #8 (Đạt), #10 (Doanh)
+- Viết chính mục 4 quy trình trước/sau (CP5), cùng Doanh
+- Phỏng vấn 1 người ngoài nhóm cho CP4 (snapshot 2)
 
 **Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
 
--
+- Ghi dòng #1–#3 và câu hỏi phản biện ở bảng 2.1; câu hỏi về #10 (65 phút tính cho bao nhiêu CVE, scan mấy lần/tuần) khiến nhóm ghi rõ tần suất 3 lần/tuần ở mục 2.4
+- Mục 4.1: quy trình hiện tại 5 bước có actor, input, output, thời gian, handoff; bottleneck là bước đánh giá ngữ cảnh (~30/65 phút)
+- Mục 4.2: quy trình tương lai đánh dấu Rule / AI / con người, boundary, phương án quay về; ước lượng phương án chỉ dùng Rule còn ~40 phút/lần
+- Mục 4.3: bảng before/after
+- Điền `cp4-interview-snapshot-2.md` (backend dev kiêm DevOps, team nhỏ), là tín hiệu phản bác: team nhỏ thì pain thấp
 
 **Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
 
--
+- `TEAM.md` bảng thành viên: commit `70a6a17`, `923478b`
+- Mục 2.1: các commit "Update group_report.md" từ `0c979a7` đến `dcf249a`
+- Mục 4: commit `583dd99`
+- `report/assets/cp4-interview-snapshot-2.md`: commit `54cf2bb`, `de7d300`
+- Báo cáo cá nhân: commit `bb1ff11`
 
 **Điều mình học được từ phần nhóm:**
 
 -
+
+### NguyenMinhDat-2A202603582
+
+**Phần việc phụ trách:**
+
+- Pitch 3 card #7, #8, #9 ở CP3; phản biện card #2 (Cường), #5 (Bộ), #12 (Doanh)
+- Viết mục 6 (CP6): ma trận, so sánh 4 mức, AI Canvas, câu hỏi PAIR
+- Phỏng vấn 1 người ngoài nhóm cho CP4 (snapshot 3)
+
+**Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
+
+- Câu hỏi cho #5 về căn cứ xác định nguyên nhân (thiếu ngày hiệu lực, người phụ trách); câu hỏi cho #12 tách "quên bước" với "smoke test mất thời gian"
+- Viết bản đầu mục 6.1–6.2: ma trận độ mơ hồ × độ phức tạp, bảng No AI / Rule / Workflow / Agent; sau đó sửa mức chọn thành pilot Rule 2 tuần, Workflow có AI ở trạng thái Not Yet
+- Viết AI Canvas (6.3) và 2 câu hỏi PAIR (6.4); sửa Outcome thành 65 → ≤ 30 phút/lần, tính cả thời gian review
+- Điền `cp4-interview-snapshot-3.md` (DevOps nhiều repo, 45 phút/lần, 2 lần/tuần)
+
+**Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
+
+- `TEAM.md` bảng thành viên: commit `d3769c6`
+- Mục 2.1: commit `9bc5897`, `5b3891e`, `bf102c4`, `d1492de`, `cf52694`
+- Mục 6: commit `9bae797`, `3051d5f`, `cbbcaef`, `7d13e6e`
+- `report/assets/cp4-interview-snapshot-3.md`: commit `9528a40`
+- Báo cáo cá nhân: commit `4b4a638`, `3d65548`, `00c5d97`
+
+**Điều mình học được từ phần nhóm:**
+
+- Cùng một kiểu khó khăn có thể xuất hiện ở nhiều công việc khác nhau (kiểm bài trước khi nộp và kiểm trước khi deploy), nhưng hậu quả khác hẳn nhau
+- Phải tách điều đã biết với điều đang đoán: baseline chủ yếu từ một người thì chưa phải số đã đo
+- Mức Critical của một CVE chưa đủ để biết nó có ảnh hưởng tới hệ thống cụ thể; vẫn phải kiểm ngữ cảnh
