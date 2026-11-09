@@ -18,9 +18,9 @@
 
 | # | Người đưa ra | Candidate (Job Story ngắn) | Actor | Bottleneck | Câu hỏi phản biện nhận được (ai hỏi) |
 |---:|---|---|---|---|---|
-| 1 |Phạm Tuấn Cường |Khi chuẩn bị nộp bài lab, tôi muốn đối chiếu bài mình với RUBRIC, CHECKPOINTS và SUBMISSION cùng lúc, để không mất điểm vì thiếu mục hoặc sai cấu trúc |học viên | |3 file hướng dẫn, khoảng 30 phút rà mỗi lab; lab trước bị trừ điểm vì sai tên file |
-| 2 |Phạm Tuấn Cường |Khi nhóm chia việc làm lab, các bạn muốn biết ai đang làm phần nào, để không làm trùng|Thành viên nhóm | |Lab trước 2 người cùng làm phần research; đếm được 8 tin "ai làm phần này?" trong chat nhóm |
-| 3 |Phạm Tuấn Cường |Khi bạn cùng lớp gặp lỗi git lúc gần deadline, họ muốn biết cách sửa nhanh, để kịp nộp bài|học viên | |Tuần qua có 5 câu hỏi về lỗi git trên Discord lớp, 3 câu được hỏi sau 22h |
+| 1 |Phạm Tuấn Cường |Khi chuẩn bị nộp bài lab, tôi muốn đối chiếu bài mình với RUBRIC, CHECKPOINTS và SUBMISSION cùng lúc, để không mất điểm vì thiếu mục hoặc sai cấu trúc |học viên |3 file hướng dẫn, khoảng 30 phút rà mỗi lab; lab trước bị trừ điểm vì sai tên file ||
+| 2 |Phạm Tuấn Cường |Khi nhóm chia việc làm lab, các bạn muốn biết ai đang làm phần nào, để không làm trùng|Thành viên nhóm |Lab trước 2 người cùng làm phần research; đếm được 8 tin "ai làm phần này?" trong chat nhóm ||
+| 3 |Phạm Tuấn Cường |Khi bạn cùng lớp gặp lỗi git lúc gần deadline, họ muốn biết cách sửa nhanh, để kịp nộp bài|học viên |Tuần qua có 5 câu hỏi về lỗi git trên Discord lớp, 3 câu được hỏi sau 22h ||
 | 4 | | | | | |
 | 5 | | | | | |
 | 6 | | | | | |
