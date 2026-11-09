@@ -13,7 +13,7 @@
 | STT | Họ và tên | MSSV | Vai trò trong nhóm | Tài khoản GitHub |
 |---:|---|---|---|---|
 | 1 |Đỗ Duy Bộ |2A202603591|Trưởng nhóm|https://github.com/flying-bug|
-| 2 | | | | |
+| 2 |Phạm Tuấn Cường||2A202603584|Thành Viên|https://github.com/Ptuancuong|
 | 3 | | | | |
 | 4 | | | | |
 
