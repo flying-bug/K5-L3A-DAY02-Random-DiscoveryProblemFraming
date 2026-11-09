@@ -4,10 +4,10 @@
 
 | Trường | Nội dung |
 |---|---|
-| Người được hỏi (vai trò, không ghi tên thật) |  |
-| Ngày / cách phỏng vấn |  |
-| Câu nói đáng nhớ nhất (nguyên văn) |  |
-| Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? |  |
-| Hiện đang xử lý bằng cách nào (workaround)? |  |
-| Mất bao lâu, bao lần? |  |
-| Insight / opportunity rút ra |  |
+| Người được hỏi (vai trò, không ghi tên thật) | Backend dev kiêm DevOps, 2 repo trên GitHub; dùng Dependabot |
+| Ngày / cách phỏng vấn | Hỏi qua điện thoại |
+| Câu nói đáng nhớ nhất (nguyên văn) | "Có bản vá thì cứ merge PR của Dependabot, test xanh là xong, ít khi ngồi đọc CVE." |
+| Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? | tuần trước có 9 cảnh báo Dependabot, merge 7 PR nâng version, 2 cái chưa có bản vá thì để đó |
+| Hiện đang xử lý bằng cách nào (workaround)? | Không triage theo từng lần scan, dồn cảnh báo lại xử lý cuối tuần bằng cách merge PR nâng version. Chưa bật auto-triage rules |
+| Mất bao lâu, bao lần? | Khoảng 20 phút/tuần. Chưa từng trễ release vì scan |
+| Insight / opportunity rút ra | Phản bác: ở team nhỏ, ít repo, pain thấp; cách "có bản vá thì nâng version" (No AI) là đủ. Problem chỉ đáng giải ở team lớn hơn, nhiều repo |
