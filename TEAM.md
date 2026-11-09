@@ -4,7 +4,7 @@
 
 ## Thông tin nhóm
 
-- Tên nhóm:
+- Tên nhóm: Random
 - Candidate problem nhóm chọn (1 câu):
 - Quyết định cuối (Go / Not Yet / No-Go):
 
@@ -12,7 +12,7 @@
 
 | STT | Họ và tên | MSSV | Vai trò trong nhóm | Tài khoản GitHub |
 |---:|---|---|---|---|
-| 1 | | | | |
+| 1 |Đỗ Duy Bộ |2A202603591|Trưởng nhóm|https://github.com/flying-bug|
 | 2 | | | | |
 | 3 | | | | |
 | 4 | | | | |
@@ -37,7 +37,7 @@ Gợi ý vai trò (một người có thể giữ nhiều vai): điều phối t
 
 Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `HoVaTen-MSSV`.
 
-### HoVaTen-MSSV
+### DoDuyBo-2A202603591
 
 **Phần việc phụ trách:**
 
@@ -54,3 +54,23 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 **Điều mình học được từ phần nhóm:**
 
 -
+
+
+### HoTen-MSSV
+
+**Phần việc phụ trách:**
+
+-
+
+**Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
+
+-
+
+**Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
+
+-
+
+**Điều mình học được từ phần nhóm:**
+
+-
+
