@@ -63,13 +63,18 @@ Những ý đã gạch bỏ vì là solution đội lốt opportunity:
 | | | | | | | | | |
 | | | | | | | | | |
 
-**Candidate được chọn:**
+**Candidate được chọn:** #10 — Khi security scan trả về danh sách lỗ hổng, DevOps muốn biết cái nào thật sự phải xử lý trước, để không chặn release và không bỏ sót lỗ hổng nghiêm trọng.
 
 **Vì sao chọn:**
+- Bottleneck lớn nhất trong shortlist: ~65 phút/lần scan, [__] lần/tuần (số liệu của Doanh).
+- Hậu quả nghiêm trọng ở cả hai phía: triage chậm thì chặn release; bỏ sót thì để lọt lỗ hổng Critical. Vì vậy Impact được 5.
+- So sánh rõ được cả 4 mức: chỉ sửa quy trình, ví dụ ghi lại quyết định cũ theo mã CVE (No AI); lọc nhiễu theo phạm vi build/test và trạng thái bản vá (Rule); đánh giá ngữ cảnh các ca khó có người duyệt (Workflow); tự động bỏ qua hoặc tự sửa (Agent). Mỗi mức giải một phần khác nhau của bài toán.
 
 **Vì sao loại các candidate còn lại:**
+- #11 (CI fail): điểm gần bằng #10, nhưng mỗi lần chỉ ~15 phút và chưa có số lần fail/tuần (câu hỏi của Bộ chưa có số liệu trả lời). Hậu quả khi chẩn đoán sai chủ yếu là mất thời gian re-run, nhẹ hơn để lọt lỗ hổng bảo mật.
+- #4 (phản ánh khách hàng): bottleneck chỉ ~25 phút/tuần cho 1 người. Khi Doanh hỏi về lần gom sai gần nhất, Bộ chưa đưa được ví dụ cụ thể / ghi đúng câu trả lời thật. Nội dung phản ánh có thông tin cá nhân của khách nên rủi ro về dữ liệu cao. Trong nhóm chỉ Bộ có trải nghiệm.
 
-**Xử lý bất đồng (nếu có):**
+**Xử lý bất đồng (nếu có):** Bộ ban đầu muốn chọn #4 vì có số liệu của chính mình, nhưng đồng ý chọn #10 vì impact và hậu quả lớn hơn. Nhóm lo #10 chỉ có Doanh hiểu domain, nên thống nhất Doanh giải thích quy trình scan cho cả nhóm và hẹn 2–3 người làm DevOps/dev ngoài nhóm để phỏng vấn ở CP4.
 
 ---
 
