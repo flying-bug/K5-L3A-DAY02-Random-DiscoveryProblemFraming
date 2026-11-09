@@ -84,16 +84,16 @@ Những ý đã gạch bỏ vì là solution đội lốt opportunity:
 
 | # | Giả định | Loại (Value / Usability / Feasibility / Viability) | Quan trọng (1–5) | Đã có bằng chứng (1–5) | Kiểm chứng trước? |
 |---:|---|---|---:|---:|---|
-| 1 | DevOps/dev ngoài nhóm cũng mất nhiều thời gian triage security scan; đây là công việc lặp lại và ảnh hưởng đáng kể đến công việc hoặc tiến độ release. | Value | 5 | 2 |  Có - ưu tiên 1. Phỏng vấn 2–3 người ngoài nhóm về lần scan gần nhất, số finding, thời gian từng bước và ảnh hưởng thực tế.|
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
-| 6 | | | | | |
+| 1 | DevOps/dev ngoài nhóm cũng mất ≥ 30 phút cho mỗi lần triage kết quả security scan, và việc này lặp lại ≥ 1 lần/tuần | Value | 5 | 2 | ✅ Ưu tiên 1 |
+| 2 | Phần lớn finding (≥ 50%) mỗi lần scan là nhiễu nhận ra được bằng dấu hiệu rõ: package chỉ dùng lúc build/test, chưa có bản vá, hoặc trùng lần scan trước | Value | 5 | 2 | ✅ Ưu tiên 2 |
+| 3 | Bước tốn thời gian nhất là đánh giá CVE có thật sự ảnh hưởng hệ thống (chiếm ≥ 1/2 thời gian triage), không phải bước lọc nhiễu | Value | 5 | 1 | ✅ Ưu tiên 3 |
+| 4 | Triage chậm đã từng làm trễ release ít nhất 1 lần trong 3 tháng gần nhất | Value | 4 | 1 | ✅ |
+| 5 | Scanner team đang dùng đã có sẵn tính năng lọc (theo mức nghiêm trọng, bỏ lỗ hổng chưa có bản vá, bỏ qua theo mã CVE) nhưng chưa bật hoặc chưa cấu hình | Feasibility | 4 | 1 | ✅ |
+| 6 | Công ty cho phép đưa thông tin lỗ hổng và đoạn code vào công cụ AI bên ngoài | Viability | 5 | 1 | — Hỏi Team Lead sau lab |
 
 *Điền 4–6 giả định; xóa dòng thừa.*
 
-Giả định nhóm kiểm chứng trong buổi này:
+Giả định nhóm kiểm chứng trong buổi này: #1 → #5. Cách kiểm: phỏng vấn 2–3 DevOps/dev ngoài nhóm theo The Mom Test, hỏi về lần scan gần nhất: số finding, bao nhiêu cái phải xử lý, thời gian từng bước, có làm trễ release không, đang dùng scanner và bộ lọc nào. Giả định #5 kiểm thêm bằng research (mục 3.3). Giả định #6 chưa kiểm được trong buổi vì cần hỏi Team Lead của công ty.
 
 ### 3.2. Kiểm chứng
 
@@ -122,9 +122,12 @@ Tổng hợp:
 
 | Công cụ / case / pattern | Link | Giải bước nào trong quy trình? | Điểm mạnh | Khoảng trống / rủi ro | Bài học cho nhóm |
 |---|---|---|---|---|---|
-| | | | | | |
-| | | | | | |
-| | | | | | |
+| GitHub Dependabot auto-triage rules | https://docs.github.com/en/code-security/dependabot/dependabot-auto-triage-rules/about-dependabot-auto-triage-rules | Lọc nhiễu: preset tự bỏ qua cảnh báo ít ảnh hưởng của dependency chỉ dùng lúc phát triển (development-scoped) | Bật mặc định cho repo public; cảnh báo tự mở lại nếu dependency chuyển sang dùng cho production | Preset chỉ áp dụng cho npm; repo private phải tự bật; tự tạo rule cần license GitHub Code Security/Advanced Security | Lọc nhiễu bằng **Rule** đã có sẵn trên thị trường, không cần AI |
+| Trivy — lọc kết quả | https://trivy.dev/latest/docs/configuration/filtering/ | Lọc nhiễu + lưu quyết định cũ: lọc theo mức nghiêm trọng (`--severity`), bỏ lỗ hổng chưa có bản vá (`--ignore-unfixed`), file `.trivyignore` ghi mã CVE kèm ngày hết hạn, hỗ trợ VEX | Miễn phí; `.trivyignore` có ngày hết hạn, đúng cách lưu quyết định cũ theo mã CVE | `--ignore-unfixed` ẩn cả lỗ hổng Critical chưa có bản vá, trong khi chúng có thể vẫn cần biện pháp tạm; định dạng YAML và Rego còn thử nghiệm | Nhánh "đánh giá lại từ đầu" giải được bằng **No AI/Rule**; phải cẩn thận để lọc nhiễu không làm lọt Critical |
+| FIRST EPSS | https://www.first.org/epss/ | Ưu tiên: mỗi ngày cho mỗi CVE một xác suất 0–1 bị khai thác trong 30 ngày tới | Miễn phí, có CSV/API; dùng kết hợp với CVSS để xếp thứ tự | Là xác suất chung trên mọi hệ thống, không biết hệ thống của mình có thật sự gọi tới đoạn code bị lỗi không | Xếp thứ tự bằng **Rule** (CVSS + EPSS) được; phần ngữ cảnh riêng vẫn cần người |
+| Snyk — Priority Score + Reachability | https://docs.snyk.io/scan-fix-and-prevent/fix/prioritize-issues-for-fixing/reachability-analysis | Đánh giá ngữ cảnh: chấm điểm ưu tiên dựa trên CVSS, xu hướng, khả năng code gọi tới (reachability), có exploit hay không | Giải đúng phần khó nhất (nhánh "có thật sự ảnh hưởng không") | GA chỉ cho Java, JS/TS, Python; dùng qua CLI/CI còn Early Access; phải upload mã nguồn; trang ghi rõ "NO PATH FOUND" không có nghĩa là chắc chắn an toàn | Thị trường đã có công cụ làm phần ngữ cảnh, nhưng kết quả **không chắc chắn** nên vẫn cần người duyệt; upload code là rủi ro Viability |
+
+**Kết luận research:** Phần lọc nhiễu và lưu quyết định cũ đã có công cụ làm bằng Rule (Dependabot, Trivy). Phần xếp ưu tiên chung có EPSS miễn phí. Chỉ phần "CVE có thật sự ảnh hưởng hệ thống mình không" là còn mơ hồ: Snyk có làm nhưng kết quả không chắc chắn và phải upload code. Đây là chỗ duy nhất có thể cân nhắc AI, và luôn phải có người duyệt.
 
 ---
 
